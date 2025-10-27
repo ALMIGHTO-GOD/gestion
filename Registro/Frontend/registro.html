@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="registro.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
      <form action="" method="post">
-        <input type="text" placeholder="nombre">
+        <div class="mb-3"></div>
+
+        <label for="exampleFormControlInput1">nombres</label><br>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nombres"><br>
         
+        <label for="exampleFormControlInput1">apellidos</label><br>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="apellidos"><br>
+
+        <label for="exampleFormControlInput1">telefono</label><br>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="telefono"><br>
+
+        <label for="exampleFormControlInput1" class="form-label">Correo electronico</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com"><br>
+        
+        <label for="exampleFormControlInput1">contraseña</label><br>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="contraseña"><br>
+        
+        <label for="exampleFormControlInput1">confirmar contraseña</label><br>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="confirmar contraseña"><br>
+        <button>REGISTRARSE</button>
+        </div>
      </form>
+
 </body>
 </html>
