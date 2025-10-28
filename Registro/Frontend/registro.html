@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion</title>
-    <link rel="stylesheet" href="registro.css">
+    <title>Crear Cuenta</title>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="registro.css">
 </head>
-<body>
+<body background-color="#0a192f">
      <form action="" method="post" id="registroForm">
+        <h3>Crea tu Cuenta</h3>
         <div class="mb-3"></div>
 
         <label for="Nombres">Nombres</label>
-        <input type="text" class="form-control" id="nombre" placeholder="nombres"><br>
-        
+        <input type="text"  id="nombre"><br>
         <label for="apellidos">Apellidos</label>
-        <input type="text" class="form-control" id="apellidos" placeholder="apellidos"><br>
-
+        <input type="text"  id="apellidos"><br>
         <label for="telefono">Telefono</label>
-        <input type="text" class="form-control" id="telefono" placeholder="telefono"><br>
-
+        <input type="text"  id="telefono"><br>
         <label for="Correo">Correo electronico</label>
-        <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com"><br>
-        
+        <input type="email" id="correo" placeholder="nombre@ejemplo.com"><br>
         <label for="contraseña1">Contraseña</label>
-        <input type="password" id="contraseña1" class="form-control" aria-describedby="passwordHelpBlock"placeholder="contraseña"><br>
-        
+        <input type="password" id="contraseña1" aria-describedby="passwordHelpBlock"><br>
         <label for="contraseña2">Confirmar contraseña</label>
-        <input type="password" class="form-control" id="contraseña2" placeholder="confirmar contraseña"><br>
-        
+        <input type="password" id="contraseña2" ><br>
          <div id="errorMsg" class="error">
-            tu contraseña debe de tener entre 8-12 caracteres de largo,contener lteras y numeros, sin espacios ni caracteres especiales o emojis
-         </div>
-
-        <button type="button" class="btn btn-primary" onclick="validarFormulario()">REGÍSTRATE</button>
+            tu contraseña debe de tener entre 8-12 caracteres de largo, contener letras y numeros, sin espacios ni caracteres especiales o emojis
+         </div> <br>
+        <button type="button" class="btn-registrar" onclick="validarFormulario()">Regístrate</button>
+        </div><br><br>
+        <div id="iniciar-sesion">
+            <p>ya tienes una cuenta? <a href="#">Inicia sesion</a></p>
         </div>
      </form>
       <script src="scripts.js"></script>

@@ -53,7 +53,7 @@
         return;
       }
 
-      // ✅ Si todo está bien:
+      //Si todo está bien:
       alert("¡Registro exitoso!");
       document.getElementById('registroForm').reset();
     }

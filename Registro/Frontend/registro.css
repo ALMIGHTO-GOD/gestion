@@ -1,15 +1,47 @@
     form {
-      background: #4781d9;
+      background: #ffffff;
       padding: 20px 40px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 550px; /* ancho fijo opcional */
     }
     body {
+      margin: 0;
+      padding: 0;        
       display: flex;
       justify-content: center; /* centra horizontalmente */
       align-items: center;     /* centra verticalmente */
       height: 100vh;           /* usa toda la altura de la pantalla */
-      background-color: #000000;
+      background-color: #0a192f;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
-    }    
+    }
+    input{
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+.btn-registrar{
+    width: 100%;
+    padding: 12px;
+    /* Color de acento azul, como el logo de Tele 10 */
+    background-color: #007bff; 
+    
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+a{
+    color: #007bff;
+    text-decoration: none;
+}
+#iniciar-sesion{
+  text-align: center;
+}
