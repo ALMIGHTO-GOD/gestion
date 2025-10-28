@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eff3] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d171b]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d171b] text-lg font-bold leading-tight tracking-[-0.015em]">Media Sprouts</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Projects</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Community</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Resources</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#13a4ec] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Publish Your Idea</span>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASlfp9_q5mr_ni4yjjsDl_qwXIV7CPtlBIsfaiuUhnpMvt2ahf1P2hpsU0GdEnbQdZD6G_PwpQ_yXtVzZrLZONtQkzzkq_Z8igd9Z7VlUeysSl_YW76qTNygJF7gjR1uUkIq8_1HPv9nWNKWSyVh8O4E5pTLoU_u8BZ83ukTE86tXhvs04bNzV59HdRlldF8zQoklEavUM_I3JeWdG3pFQGUsBBiDBtbV-rXVarva8QDBdxXnTeL_0aTKY4xPpBRzZmyb63YIdaVE");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <h2 class="text-[#0d171b] tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3 pt-5">Explore Projects</h2>
+            <div class="px-4 py-3">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                  <div
+                    class="text-[#4c809a] flex border-none bg-[#e7eff3] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                    data-icon="MagnifyingGlass"
+                    data-size="24px"
+                    data-weight="regular"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    placeholder="Search projects"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d171b] focus:outline-0 focus:ring-0 border-none bg-[#e7eff3] focus:border-none h-full placeholder:text-[#4c809a] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <div class="flex gap-3 p-3 flex-wrap pr-4">
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e7eff3] pl-4 pr-4">
+                <p class="text-[#0d171b] text-sm font-medium leading-normal">All</p>
+              </div>
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e7eff3] pl-4 pr-4">
+                <p class="text-[#0d171b] text-sm font-medium leading-normal">Television</p>
+              </div>
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e7eff3] pl-4 pr-4">
+                <p class="text-[#0d171b] text-sm font-medium leading-normal">Radio</p>
+              </div>
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e7eff3] pl-4 pr-4">
+                <p class="text-[#0d171b] text-sm font-medium leading-normal">Digital</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBo9uGLsAPpQzsU1ySLxMCtbex31kHTws_bCCpHupKslCFlc7Z7APGHqySB62lworE8IYKW8R4Jw3DyvGMswu7v_ZV8an5cThJyQSipVlO_xVrvKxOuVpgmAG7-Gx6yxTFANIrCUobqS7UxObzNX0Fy15e0u_KGh-OrmHHOL-c-hAZpPrftQfPanE1LSTscpd7e6bFcyePxPORwYN9TVTHdGjWRD9DZWfCC6Ewq5uKqoYSls3og3dqcA0ur7lWP0opgl-MtGxo_n-8");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">The Midnight Hour</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">A late-night talk show</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlCS9tG7A6j4b4yIscEKftShzt3G8R1J64S4UzGMwqIS4dYrzr86WTr143Mdbo46pA03RIdMegPMWgawzmzlfsvlIHtPA4feecMhSTyGRXMyJLECriRow9hdDUYbgW0tBih3Hwpo7g8ssZ88roDD4xE5eyfLaMstk_nDYHbW2OGQ-IANtTGzm2WfemoboIdRESMo-oLQJOj36mbYBretklezXuUh280wulvcASWCWRNcVWL_RRCsh6CDWx2HqUSJ5_V8ddYjNx62k");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">Soundscapes</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">An immersive audio experience</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1qIpF02u5ZkJwEHGpfjL3OewOac3VRgMHbyhJ-Fs-E8jrW9bEx7RQTDH0UIBdBp6heY7K3DmexLerZnyTtH7mHYf5q5XZhNd3D4jPBodTU6PQq66wvufg0OBkd4jPqEeA_LewJbJFq0CNrnFOsFeTLSy7LfGvVI4B3YofIOX0KMmHW_2QYx4pTne98a0WBblVSxmIgqRGn8K_AeiWT5qUL5-VEnPHP-hXTD8icDpIENDiiqCGRr7flQ7JUzF3zMh0d-L-Os0mJGM");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">The Daily Grind</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">A podcast about work-life balance</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCw3Ax-un6dp2JOcxIGNBktmHN64DlJkNF6Et-CIL0BNXdd3uHv5-GEP16Yk6TCdbzWYkLb_9BW8gTwGF6IgObqmhyIxqi5m2N2ZCpOHKgGGlhjFTMIpRZkcf1sKp_-AnmYdeQvbdVP4HaJ67Sa2SPJRaSDE0M6NHmGTVQtuXqUxirh8ojg1_qFqaTEQAUl0997pFLOxtVrkCXc_--kSiHOOpBneWt-l6Uwy_OtnwPYUG9UD-EAB2dBBSZl-wXXe5CFA1FrLhm1JiE");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">Beyond the Horizon</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">A travel radio series</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC20iWgd9s5j2qW4WRLGlWmLiLZNrLvuLAVNy-fv2UlP-ClucFxxe2gDPA6FmIH626gqUNcpjmRe2M81GSaTCJWk0R5R8iI6rtXqz5jByU1txIBr16PxGj7MZOte0tCSpK-AwHbJvgDOF0gcHIJnkUy1DlJaZaHNdOPbJgSeT3mXyn2iaq392g5UusDWwJrFMRQnODnEKIkEvygysUE5Y8oc_yleF0-GgE6UlZdRCc-futnVX2dGqB4QP9EGUg_5BYT_-4LVK6eP58");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">Echo Chamber</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">A news and current affairs program</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEVoEYmWIGlLoMqQj6gwREKAdZZr4ZuN4cPwF30qeiE1QReKbYyzNHell_aiQfaERWgJ9Zext3TumY8y9I8WSTwFsqyK4CHJzuS0ZJ7JhZQuCf34chPVQWN-sIjyJfhZNGs9tYr0IPme2omTryG551O3_2zDqJZBKTTjOE8oOsxXhZoLB6KiXgS6jq1EtcEf0hMJv03g9KeEXneSKdSDUjvnx24-k1ZOrSDo7ll6AuyWftIeevGP-ke8YANWb01s0i_EbHmmptUk0");'
+                ></div>
+                <div>
+                  <p class="text-[#0d171b] text-base font-medium leading-normal">The Storyteller's Corner</p>
+                  <p class="text-[#4c809a] text-sm font-normal leading-normal">A storytelling podcast</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-center p-4">
+              <a href="#" class="flex size-10 items-center justify-center">
+                <div class="text-[#0d171b]" data-icon="CaretLeft" data-size="18px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+                  </svg>
+                </div>
+              </a>
+              <a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-[#0d171b] rounded-full bg-[#e7eff3]" href="#">1</a>
+              <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#0d171b] rounded-full" href="#">2</a>
+              <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#0d171b] rounded-full" href="#">3</a>
+              <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#0d171b] rounded-full" href="#">4</a>
+              <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#0d171b] rounded-full" href="#">5</a>
+              <a href="#" class="flex size-10 items-center justify-center">
+                <div class="text-[#0d171b]" data-icon="CaretRight" data-size="18px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

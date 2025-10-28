@@ -9,10 +9,18 @@
 
     // 🔍 Función de validación
     function validarFormulario() {
+      const correo = document.getElementById('correo').value.trim();
       const password = document.getElementById('contraseña1').value.trim();
       const confirmar = document.getElementById('contraseña2').value.trim();
       const errorDiv = document.getElementById('errorMsg');
       errorDiv.textContent = '';
+
+      // 📨 Validación del correo electrónico
+      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!regexCorreo.test(correo)) {
+      errorDiv.textContent = "Por favor, ingresa un correo electrónico válido (ejemplo: usuario@dominio.com)";
+      return;
+      }
 
       // Validaciones basadas en el JSON
       if (password.length < reglasPassword.minLength || password.length > reglasPassword.maxLength) {
