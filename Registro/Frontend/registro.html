@@ -10,29 +10,34 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-     <form action="" method="post">
+     <form action="" method="post" id="registroForm">
         <div class="mb-3"></div>
 
-        <label for="exampleFormControlInput1">nombres</label><br>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nombres"><br>
+        <label for="Nombres">Nombres</label>
+        <input type="text" class="form-control" id="nombre" placeholder="nombres"><br>
         
-        <label for="exampleFormControlInput1">apellidos</label><br>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="apellidos"><br>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" placeholder="apellidos"><br>
 
-        <label for="exampleFormControlInput1">telefono</label><br>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="telefono"><br>
+        <label for="telefono">Telefono</label>
+        <input type="text" class="form-control" id="telefono" placeholder="telefono"><br>
 
-        <label for="exampleFormControlInput1" class="form-label">Correo electronico</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com"><br>
+        <label for="Correo">Correo electronico</label>
+        <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com"><br>
         
-        <label for="exampleFormControlInput1">contraseña</label><br>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="contraseña"><br>
+        <label for="contraseña1">Contraseña</label>
+        <input type="password" id="contraseña1" class="form-control" aria-describedby="passwordHelpBlock"placeholder="contraseña"><br>
         
-        <label for="exampleFormControlInput1">confirmar contraseña</label><br>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="confirmar contraseña"><br>
-        <button>REGISTRARSE</button>
+        <label for="contraseña2">Confirmar contraseña</label>
+        <input type="password" class="form-control" id="contraseña2" placeholder="confirmar contraseña"><br>
+        
+         <div id="errorMsg" class="error">
+            tu contraseña debe de tener entre 8-12 caracteres de largo,contener lteras y numeros, sin espacios ni caracteres especiales o emojis
+         </div>
+
+        <button type="button" class="btn btn-primary" onclick="validarFormulario()">REGÍSTRATE</button>
         </div>
      </form>
-
+      <script src="scripts.js"></script>
 </body>
 </html>

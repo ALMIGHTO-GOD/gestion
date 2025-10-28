@@ -1,7 +1,15 @@
     form {
-      background: white;
+      background: #4781d9;
       padding: 20px 40px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px; /* ancho fijo opcional */
+      width: 550px; /* ancho fijo opcional */
     }
+    body {
+      display: flex;
+      justify-content: center; /* centra horizontalmente */
+      align-items: center;     /* centra verticalmente */
+      height: 100vh;           /* usa toda la altura de la pantalla */
+      background-color: #000000;
+      margin: 0;
+    }    
