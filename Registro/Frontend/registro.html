@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta</title>
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="registro.css">
@@ -17,10 +16,8 @@
         </div>
         <div class="mb-3"></div>
 
-        <label for="Nombres">Nombres</label>
+        <label for="Nombres">Nombres y apellidos</label>
         <input type="text"  id="nombre"><br>
-        <label for="apellidos">Apellidos</label>
-        <input type="text"  id="apellidos"><br>
         <label for="telefono">Telefono</label>
         <input type="text"  id="telefono"><br>
         <label for="Correo">Correo electronico</label>
@@ -29,8 +26,12 @@
         <input type="password" id="contraseña1" aria-describedby="passwordHelpBlock"><br>
         <label for="contraseña2">Confirmar contraseña</label>
         <input type="password" id="contraseña2" ><br>
-         <div id="errorMsg" class="error">
+        <div id="aviso-contraseña" class="error">
             tu contraseña debe de tener entre 8-12 caracteres de largo, contener letras y numeros, sin espacios ni caracteres especiales o emojis
+        </div><br>
+         <div id="errorMsg" class="error">
+
+
          </div> <br>
         <button type="button" class="btn-registrar" onclick="validarFormulario()">Regístrate</button>
         </div><br><br>

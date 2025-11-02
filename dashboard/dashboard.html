@@ -1,156 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediaConnect - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="main-header">
-        <div class="main-header__logo">MediaConnect</div>
-        <nav class="main-header__nav">
-            <ul>
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">Submit Project</a></li>
-                <li><a href="#">Admin</a></li>
-            </ul>
-        </nav>
-        <button class="btn btn--primary" id="new-project-btn">+ New Project</button>
+      <div class="main-header__logo">MediaConnect</div>
+      <nav class="main-header__nav">
+        <ul>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="#">Submit Project</a></li>
+          <li><a href="#">Admin</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn--primary" id="new-project-btn">+ New Project</button>
     </header>
 
     <main class="main-content">
-        <section class="projects-section">
-            <header class="projects-section__header">
-                <h1>Your Projects</h1>
-                <p>Manage and track your submissions.</p>
-            </header>
+      <section class="projects-section">
+        <header class="projects-section__header">
+          <h1>Your Projects</h1>
+          <p>Manage and track your submissions.</p>
+        </header>
 
-            <div class="project-grid">
-
-                <article class="project-card" 
-                    data-title="Revolutionary Cooking Show"
-                    data-author="Sarah Johnson"
-                    data-status="Aceptado"
-                    data-image="https://via.placeholder.com/600x300/3c4b3f/ffffff?text=Cooking+Show"
-                    data-description="Una descripción mucho más larga y completa sobre el Revolutionary Cooking Show. Este programa explora técnicas de gastronomía molecular aplicadas a recetas tradicionales, creando una fusión única que sorprenderá a la audiencia. Grabado en 4K con chefs invitados de renombre internacional.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/3c4b3f/ffffff?text=Cooking+Show" alt="Cocina moderna">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>Revolutionary Cooking Show</h3>
-                        <p class="project-card__description">A unique cooking show that combines traditional recipes with modern molecular gastronomy techniques.</p>
-                        <p class="project-card__author">Sarah Johnson</p>
-                    </div>
-                </article>
-
-                <article class="project-card"
-                    data-title="Urban Wildlife Documentary"
-                    data-author="Michael Chen"
-                    data-status="Proyecto en revisión"
-                    data-image="https://via.placeholder.com/600x300/8a6e4b/ffffff?text=Wildlife"
-                    data-description="Esta serie documental sigue la vida de animales sorprendentes que han hecho de las grandes ciudades su hogar. Desde halcones en rascacielos hasta zorros en parques suburbanos, exploramos su increíble capacidad de adaptación.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/8a6e4b/ffffff?text=Wildlife" alt="Halcón en una rama">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>Urban Wildlife Documentary</h3>
-                        <p class="project-card__description">An innovative documentary series exploring how wildlife adapts to urban environments.</p>
-                        <p class="project-card__author">Michael Chen</p>
-                    </div>
-                </article>
-
-                <article class="project-card"
-                    data-title="Interactive Morning Radio"
-                    data-author="Emma Rodriguez"
-                    data-status="Rechazado"
-                    data-image="https://via.placeholder.com/600x300/5a5a5a/ffffff?text=Radio"
-                    data-description="Un show de radio matutino que rompe la cuarta pared. La audiencia puede participar en tiempo real a través de redes sociales, encuestas en vivo y llamadas. Nota de rechazo: El formato propuesto es demasiado similar a otros programas existentes.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/5a5a5a/ffffff?text=Radio" alt="Estudio de radio">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>Interactive Morning Radio</h3>
-                        <p class="project-card__description">A morning radio show that integrates social media and audience participation.</p>
-                        <p class="project-card__author">Emma Rodriguez</p>
-                    </div>
-                </article>
-
-                <article class="project-card"
-                    data-title="Podcast Studio Setup"
-                    data-author="Sarah Johnson"
-                    data-status="Completar información"
-                    data-image="https://via.placeholder.com/600x300/333333/ffffff?text=Podcast"
-                    data-description="Guía completa para montar un estudio de podcast profesional con un presupuesto limitado. Incluye revisiones de equipos, técnicas de acústica y software de edición. Información faltante: Se necesita un desglose detallado del presupuesto y enlaces a los proveedores.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/333333/ffffff?text=Podcast" alt="Micrófono de podcast">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>Podcast Studio Setup</h3>
-                        <p class="project-card__description">A podcast studio setup with microphones and headphones.</p>
-                        <p class="project-card__author">Sarah Johnson</p>
-                    </div>
-                </article>
-
-                <article class="project-card"
-                    data-title="The Art of Photography"
-                    data-author="Michael Chen"
-                    data-status="Aceptado"
-                    data-image="https://via.placeholder.com/600x300/cccccc/000000?text=Photography"
-                    data-description="Descripción completa del proyecto de fotografía.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/cccccc/000000?text=Photography" alt="Equipo de fotografía">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>The Art of Photography</h3>
-                        <p class="project-card__description">A photography studio with a camera and lighting equipment.</p>
-                        <p class="project-card__author">Michael Chen</p>
-                    </div>
-                </article>
-
-                <article class="project-card"
-                    data-title="The Great Outdoors"
-                    data-author="Emma Rodriguez"
-                    data-status="Proyecto en revisión"
-                    data-image="https://via.placeholder.com/600x300/6f8a8c/ffffff?text=Outdoors"
-                    data-description="Descripción completa del proyecto The Great Outdoors.">
-                    
-                    <div class="project-card__image-container">
-                        <img src="https://via.placeholder.com/400x250/6f8a8c/ffffff?text=Outdoors" alt="Paisaje de montañas">
-                    </div>
-                    <div class="project-card__content">
-                        <h3>The Great Outdoors</h3>
-                        <p class="project-card__description">A scenic landscape with mountains and a clear sky.</p>
-                        <p class="project-card__author">Emma Rodriguez</p>
-                    </div>
-                </article>
-
+        <div class="project-grid">
+          <article
+            class="project-card"
+            data-title="Revolutionary Cooking Show"
+            data-author="Sarah Johnson"
+            data-status="Aceptado"
+            data-image="https://via.placeholder.com/600x300/3c4b3f/ffffff?text=Cooking+Show"
+            data-description="Una descripción mucho más larga y completa sobre el Revolutionary Cooking Show. Este programa explora técnicas de gastronomía molecular aplicadas a recetas tradicionales, creando una fusión única que sorprenderá a la audiencia. Grabado en 4K con chefs invitados de renombre internacional."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/3c4b3f/ffffff?text=Cooking+Show"
+                alt="Cocina moderna"
+              />
             </div>
-        </section>
+            <div class="project-card__content">
+              <h3>Revolutionary Cooking Show</h3>
+              <p class="project-card__description">
+                A unique cooking show that combines traditional recipes with modern molecular
+                gastronomy techniques.
+              </p>
+              <p class="project-card__author">Sarah Johnson</p>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-title="Urban Wildlife Documentary"
+            data-author="Michael Chen"
+            data-status="Proyecto en revisión"
+            data-image="https://via.placeholder.com/600x300/8a6e4b/ffffff?text=Wildlife"
+            data-description="Esta serie documental sigue la vida de animales sorprendentes que han hecho de las grandes ciudades su hogar. Desde halcones en rascacielos hasta zorros en parques suburbanos, exploramos su increíble capacidad de adaptación."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/8a6e4b/ffffff?text=Wildlife"
+                alt="Halcón en una rama"
+              />
+            </div>
+            <div class="project-card__content">
+              <h3>Urban Wildlife Documentary</h3>
+              <p class="project-card__description">
+                An innovative documentary series exploring how wildlife adapts to urban
+                environments.
+              </p>
+              <p class="project-card__author">Michael Chen</p>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-title="Interactive Morning Radio"
+            data-author="Emma Rodriguez"
+            data-status="Rechazado"
+            data-image="https://via.placeholder.com/600x300/5a5a5a/ffffff?text=Radio"
+            data-description="Un show de radio matutino que rompe la cuarta pared. La audiencia puede participar en tiempo real a través de redes sociales, encuestas en vivo y llamadas. Nota de rechazo: El formato propuesto es demasiado similar a otros programas existentes."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/5a5a5a/ffffff?text=Radio"
+                alt="Estudio de radio"
+              />
+            </div>
+            <div class="project-card__content">
+              <h3>Interactive Morning Radio</h3>
+              <p class="project-card__description">
+                A morning radio show that integrates social media and audience participation.
+              </p>
+              <p class="project-card__author">Emma Rodriguez</p>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-title="Podcast Studio Setup"
+            data-author="Sarah Johnson"
+            data-status="Completar información"
+            data-image="https://via.placeholder.com/600x300/333333/ffffff?text=Podcast"
+            data-description="Guía completa para montar un estudio de podcast profesional con un presupuesto limitado. Incluye revisiones de equipos, técnicas de acústica y software de edición. Información faltante: Se necesita un desglose detallado del presupuesto y enlaces a los proveedores."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/333333/ffffff?text=Podcast"
+                alt="Micrófono de podcast"
+              />
+            </div>
+            <div class="project-card__content">
+              <h3>Podcast Studio Setup</h3>
+              <p class="project-card__description">
+                A podcast studio setup with microphones and headphones.
+              </p>
+              <p class="project-card__author">Sarah Johnson</p>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-title="The Art of Photography"
+            data-author="Michael Chen"
+            data-status="Aceptado"
+            data-image="https://via.placeholder.com/600x300/cccccc/000000?text=Photography"
+            data-description="Descripción completa del proyecto de fotografía."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/cccccc/000000?text=Photography"
+                alt="Equipo de fotografía"
+              />
+            </div>
+            <div class="project-card__content">
+              <h3>The Art of Photography</h3>
+              <p class="project-card__description">
+                A photography studio with a camera and lighting equipment.
+              </p>
+              <p class="project-card__author">Michael Chen</p>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-title="The Great Outdoors"
+            data-author="Emma Rodriguez"
+            data-status="Proyecto en revisión"
+            data-image="https://via.placeholder.com/600x300/6f8a8c/ffffff?text=Outdoors"
+            data-description="Descripción completa del proyecto The Great Outdoors."
+          >
+            <div class="project-card__image-container">
+              <img
+                src="https://via.placeholder.com/400x250/6f8a8c/ffffff?text=Outdoors"
+                alt="Paisaje de montañas"
+              />
+            </div>
+            <div class="project-card__content">
+              <h3>The Great Outdoors</h3>
+              <p class="project-card__description">
+                A scenic landscape with mountains and a clear sky.
+              </p>
+              <p class="project-card__author">Emma Rodriguez</p>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <div id="project-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="modal-close-btn" class="modal-close">&times;</button>
-            <img src="" alt="Imagen del proyecto" id="modal-image" class="modal-image">
-            <div class="modal-header">
-                <h2 id="modal-title">Título del Proyecto</h2>
-                <span id="modal-status" class="status-label"></span>
-            </div>
-            <p id="modal-author" class="modal-author"></p>
-            <p id="modal-description" class="modal-description"></p>
+      <div class="modal-content">
+        <button id="modal-close-btn" class="modal-close">&times;</button>
+        <img src="" alt="Imagen del proyecto" id="modal-image" class="modal-image" />
+        <div class="modal-header">
+          <h2 id="modal-title">Título del Proyecto</h2>
+          <span id="modal-status" class="status-label"></span>
         </div>
+        <p id="modal-author" class="modal-author"></p>
+        <p id="modal-description" class="modal-description"></p>
+      </div>
     </div>
 
     <script src="main.js" defer></script>
-</body>
+  </body>
 </html>

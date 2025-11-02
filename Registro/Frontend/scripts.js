@@ -9,10 +9,14 @@ const reglasPassword = {
 
 //Función de validación
 async function validarFormulario() {
+  const nombre = document.getElementById("nombre").value.trim();
   const correo = document.getElementById("correo").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
   const password = document.getElementById("contraseña1").value.trim();
   const confirmar = document.getElementById("contraseña2").value.trim();
   const errorDiv = document.getElementById("errorMsg");
+  const rol = "usuario";
+  const fechaRegistro = new Date();
   errorDiv.textContent = "";
 
   //Validación del correo electrónico
@@ -24,10 +28,7 @@ async function validarFormulario() {
   }
 
   // Validaciones basadas en el JSON
-  if (
-    password.length < reglasPassword.minLength ||
-    password.length > reglasPassword.maxLength
-  ) {
+  if (password.length < reglasPassword.minLength || password.length > reglasPassword.maxLength) {
     errorDiv.textContent = `La contraseña debe tener entre ${reglasPassword.minLength} y ${reglasPassword.maxLength} caracteres.`;
     return;
   }
@@ -48,8 +49,7 @@ async function validarFormulario() {
   }
 
   if (reglasPassword.noEspeciales && /[^a-zA-Z0-9]/.test(password)) {
-    errorDiv.textContent =
-      "La contraseña no puede contener caracteres especiales ni emojis.";
+    errorDiv.textContent = "La contraseña no puede contener caracteres especiales ni emojis.";
     return;
   }
 
@@ -65,29 +65,7 @@ async function validarFormulario() {
     telefono,
     correo,
     contraseña: password,
+    rol,
+    fechaRegistro,
   };
-
-  try {
-    const respuesta = await fetch(
-      "http://localhost:4000/api/usuarios/registro",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(usuario),
-      }
-    );
-
-    const data = await respuesta.json();
-
-    if (respuesta.ok) {
-      alert("¡Registro exitoso! Usuario guardado en la base de datos.");
-      document.getElementById("registroForm").reset();
-    } else {
-      errorDiv.textContent =
-        data.error || "Ocurrió un error al registrar el usuario.";
-    }
-  } catch (error) {
-    console.error("Error en el registro:", error);
-    errorDiv.textContent = "No se pudo conectar con el servidor.";
-  }
 }

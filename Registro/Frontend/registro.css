@@ -48,3 +48,23 @@ a{
 #titulo{
   text-align: center;
 }
+#errorMsg {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 5px 10px;
+    line-height: 1.2;
+    font-size: 14px;   
+    color: red;
+    width: 100%;         /* ocupa todo el ancho del formulario */
+    height: 40px;        /* altura fija para el área del mensaje */
+    box-sizing: border-box;
+    overflow: hidden;    /* evita que el texto se desborde */
+    text-align: left;    /* alineación del texto */
+}
+#aviso-contraseña{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    font-size: 14px;    
+}
