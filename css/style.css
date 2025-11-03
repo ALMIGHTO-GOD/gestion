@@ -1,0 +1,333 @@
+/* ======== Configuración Global y Variables ======== */
+:root {
+    /* Paleta de colores principal */
+    --color-bg: #0f172a;           /* Fondo principal (azul muy oscuro) */
+    --color-card-bg: #1e293b;      /* Fondo de las tarjetas (azul oscuro) */
+    --color-primary: #3b82f6;      /* Azul para botones y enlaces activos */
+    --color-primary-hover: #2563eb; /* Azul más oscuro para hover */
+    --color-text-primary: #f1f5f9;  /* Texto principal (casi blanco) */
+    --color-text-secondary: #94a3b8;/* Texto secundario (gris azulado) */
+    --color-text-muted: #64748b;    /* Texto más apagado */
+
+    /* Colores de estado (ahora para etiquetas) */
+    --status-green: #22c55e;
+    --status-yellow: #eab308;
+    --status-red: #ef4444;
+    --status-blue: #0ea5e9; /* Para "Completar información" */
+    --status-text-dark: #020617; /* Texto para etiquetas claras (ej. amarilla) */
+
+    /* Tipografía */
+    --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Varios */
+    --border-radius-main: 8px;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Reseteo básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-main);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ======== Cabecera Principal ======== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-card-bg);
+    background-color: var(--color-bg);
+}
+
+.main-header__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.main-header__nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-header__nav a {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+}
+
+.main-header__nav a:hover {
+    color: var(--color-text-primary);
+}
+
+.main-header__nav a.active {
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+/* ======== Botones ======== */
+.btn {
+    padding: 0.7rem 1.25rem;
+    border: none;
+    border-radius: var(--border-radius-main);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ======== Contenido Principal ======== */
+.main-content {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.projects-section__header {
+    margin-bottom: 2rem;
+}
+
+.projects-section__header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.projects-section__header p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* ======== Cuadrícula de Proyectos ======== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ======== Tarjeta de Proyecto ======== */
+.project-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--card-shadow);
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer; /* Indica que es clickeable */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.project-card__image-container {
+    position: relative;
+}
+
+.project-card__image-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card__content {
+    padding: 1.5rem;
+    flex-grow: 1; 
+}
+
+.project-card__content h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.project-card__description {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-card__author {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+
+/* ======== Modal y Etiquetas de Estado ======== */
+
+/* Clase helper para ocultar elementos */
+.hidden {
+    display: none;
+}
+
+/* Fondo oscuro del modal (oculto por defecto) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* <-- CAMBIADO A 'none' */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+/* Clase que se añade con JS para MOSTRAR el modal */
+.modal-overlay.is-visible {
+    display: flex; /* <-- 'flex' solo se aplica cuando tiene esta clase */
+}
+
+/* Contenido del modal */
+.modal-content {
+    position: relative;
+    background-color: var(--color-card-bg);
+    border-radius: var(--border-radius-main);
+    width: 100%;
+    max-width: 700px; /* Ancho máximo del modal */
+    max-height: 90vh; /* Alto máximo */
+    overflow-y: auto; /* Scroll si el contenido es muy largo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Botón de cerrar */
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--color-text-primary);
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    /* Redondea solo las esquinas superiores */
+    border-radius: var(--border-radius-main) var(--border-radius-main) 0 0; 
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+    gap: 1rem;
+    padding: 1.5rem 2rem 0.5rem 2rem;
+}
+
+.modal-header h2 {
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.modal-author {
+    padding: 0 2rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.modal-description {
+    padding: 1rem 2rem 2rem 2rem;
+    color: var(--color-text-secondary);
+    white-space: pre-wrap; /* Respeta saltos de línea y espacios */
+    line-height: 1.7;
+}
+
+/* Etiqueta de estado (base) */
+.status-label {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+/* Modificadores de color para la etiqueta */
+.status--aceptado {
+    background-color: var(--status-green);
+    color: var(--status-text-dark);
+}
+
+.status--proyecto-en-revisión {
+    background-color: var(--status-yellow);
+    color: var(--status-text-dark);
+}
+
+.status--rechazado {
+    background-color: var(--status-red);
+    color: var(--color-text-primary);
+}
+
+.status--completar-información {
+    background-color: var(--status-blue);
+    color: var(--color-text-primary);
+}
+
+/* Animación simple para el modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
