@@ -23,7 +23,8 @@ app.post("/api/registro", (req, res) => {
         console.error("❌ Error al guardar:", error);
         res.status(500).json({ mensaje: "Error al registrar el usuario" });
       } else {
-        res.json({ mensaje: "✅ Usuario registrado correctamente" });
+        res.json({ mensaje: "Usuario registrado correctamente" });
+        window.location.href = "/Iniciar_Sesion/frontend/iniciar_sesion.html";
       }
     }
   );
