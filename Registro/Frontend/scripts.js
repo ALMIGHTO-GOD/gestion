@@ -68,4 +68,18 @@ async function validarFormulario() {
     rol,
     fechaRegistro,
   };
+
+  try {
+    const respuesta = await fetch("http://localhost:3000/api/registro", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(usuario),
+    });
+
+    const data = await respuesta.json();
+    alert(data.mensaje);
+  } catch (error) {
+    console.error("Error al conectar con el servidor:", error);
+    errorDiv.textContent = "Error al conectar con el servidor.";
+  }
 }
