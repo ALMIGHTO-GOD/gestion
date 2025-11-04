@@ -12,14 +12,16 @@
 
   <nav class="main-header__nav">
     <ul>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="submit_project.html" class="active">Submit Project</a></li>
-      <li><a href="admin_panel.html">Admin</a></li>
+      <li><a href="dashboard.html">Inicio</a></li>
+      <li><a href="Proyecto_en_espera.html" class="active">Proyectos Subidos</a></li>
+      <li><a href="admin_panel.html">Administracion</a></li>
     </ul>
   </nav>
 
   <div class="main-header__user-actions">
-    <button class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</button>
+    <button class="btn btn--primary" id="new-project-btn" onclick="window.location.href='submit_project.html'">
+  + Nuevo Proyecto
+    </button>
     <div class="user-greeting">
       ¡Hola, Usuario Ejemplo! (<a href="logout.html">Salir</a>)
     </div>

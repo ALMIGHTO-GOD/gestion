@@ -57,7 +57,7 @@ function renderProjects(list) {
           ${p.promoted ? `<small>Promovido: ${p.promotedAt}</small>` : ""}
         </div>
         <span class="badge ${p.promoted ? "promoted" : "waiting"}">
-          ${p.promoted ? "✔ Promovido" : "⏳ En espera"}
+          ${p.promoted ? "Promovido" : "En espera"}
         </span>
       </div>
     `;

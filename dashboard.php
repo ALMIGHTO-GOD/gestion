@@ -61,15 +61,15 @@ if ($conn->connect_error) {
       <div class="main-header__logo">MEDIA SPROUTS</div>
       <nav class="main-header__nav">
         <ul>
-          <li><a href="dashboard.php" class="active">Dashboard</a></li>
-          <li><a href="submit_project.html">Submit Project</a></li> <?php if ($rol_usuario == 'admin'): ?>
-            <li><a href="admin_panel.php">Admin</a></li>
+          <li><a href="dashboard.php" class="active">Inicio</a></li>
+          <li><a href="Proyecto_en_espera.html">Proyectos Subidos</a></li> <?php if ($rol_usuario == 'admin'): ?>
+            <li><a href="admin_panel.php">Administracion</a></li>
           <?php endif; ?>
         </ul>
       </nav>
 
       <div class="main-header__user-actions">
-                <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ New Project</a>
+                <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</a>
         <div class="user-greeting">
             ¡Hola, <?php echo htmlspecialchars($nombre_usuario); ?>!
             (<a href="logout.php">Salir</a>)
