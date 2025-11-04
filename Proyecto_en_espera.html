@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto en espera</title>    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto en Espera</title> 
+  <link rel="stylesheet" href="css/proyecto_en_espera.css">
 </head>
 <body>
-        <header class="main-header">
-      <div class="main-header__logo">MediaConnect</div>
-      <nav class="main-header__nav">
-        <ul>
-          <li><a href="#" class="active">Dashboard</a></li>
-          <li><a href="#">Submit Project</a></li>
-          <li><a href="#">Admin</a></li>
-        </ul>
-      </nav>
-      <button class="btn btn--primary" id="new-project-btn">+ New Project</button>
-    </header>
+<header class="main-header">
+  <div class="main-header__logo">MEDIA SPROUTS</div>
 
-    
-    
+  <nav class="main-header__nav">
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="submit_project.html" class="active">Submit Project</a></li>
+      <li><a href="admin_panel.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-header__user-actions">
+    <button class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</button>
+    <div class="user-greeting">
+      ¡Hola, Usuario Ejemplo! (<a href="logout.html">Salir</a>)
+    </div>
+  </div>
+</header>
+
+<!------------------------------------------------------------------------->
+
+<main class="project-container">
+  <h1>Proyectos en Espera</h1>
+  <p class="subtitle">Lista de proyectos pendientes y su estado de promoción.</p>
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Buscar proyecto o equipo...">
+    <div class="total">Total: <span id="count">0</span></div>
+  </div>
+
+  <section class="project-list" id="projectList"></section>
+</main>
+
+<script src="js/Proyecto_en_espera.js"></script>
 </body>
 </html>
