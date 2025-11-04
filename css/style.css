@@ -183,6 +183,7 @@ ul {
     margin-bottom: 1.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -330,4 +331,197 @@ ul {
         opacity: 1;
         transform: scale(1);
     }
+}/* ---
+   =============================================
+   ESTILOS PARA FORMULARIOS (LOGIN, REGISTRO, SUBIR PROYECTO)
+   =============================================
+--- */
+
+/* * Usamos la fuente 'Inter' que definiste en tu dashboard.html
+ * y un fondo oscuro general.
+*/
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #0f172a; /* Un azul/gris oscuro, más elegante */
+  color: #f1f5f9;
+  margin: 0;
+}
+
+/* * Reutilizamos .login-container de los HTML
+ * pero le damos el look "dark mode" del dashboard
+*/
+.login-container {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 2.5rem;
+  
+  /* Un color de tarjeta más oscuro, que combine con el dashboard */
+  background-color: #1e293b; 
+  
+  color: #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  text-align: center;
+  color: #94a3b8; /* Un gris más suave */
+  margin-bottom: 30px;
+}
+
+/* --- Estilos para los campos del formulario --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+/* Inputs, Textareas, etc. */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="file"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  
+  /* Estilo Dark Mode */
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9; 
+  
+  border-radius: 5px;
+  box-sizing: border-box; /* Importante */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Efecto de Foco */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #38bdf8; /* Un azul brillante de acento */
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
+
+/* --- Botón de Envío --- */
+/* * Re-definimos la clase .btn-login que usaste en el HTML 
+ * para que se vea como el .btn--primary de tu dashboard
+*/
+.btn-login,
+.btn-registrar {
+  width: 100%;
+  padding: 12px;
+  
+  /* Azul de acento */
+  background-color: #38bdf8; 
+  color: #0f172a; /* Texto oscuro para que contraste */
+  
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-login:hover,
+.btn-registrar:hover {
+  background-color: #7dd3fc;
+  transform: translateY(-2px);
+}
+
+.btn-login:active,
+.btn-registrar:active {
+    transform: translateY(0);
+}
+
+/* --- Pie del Formulario --- */
+.login-footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.login-footer p {
+    color: #94a3b8;
+    margin: 10px 0;
+}
+
+.login-footer a {
+  color: #38bdf8; /* Azul de acento */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Clases de error para JavaScript */
+.error {
+    color: #f43f5e; /* Rojo de error */
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* --- Estilos para los campos del formulario --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+/* * ============================================
+ * ======> ¡ESTA ES LA SECCIÓN QUE BUSCAS! <=====
+ * ============================================
+ * Le dice a todos los tipos de input y al textarea
+ * que tengan el fondo oscuro y el texto claro.
+*/
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="file"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  
+  /* Estilo Dark Mode */
+  background-color: #0f172a; /* <--- Fondo oscuro */
+  border: 1px solid #334155;  /* <--- Borde grisáceo */
+  color: #f1f5f9;             /* <--- Texto blanco */
+  
+  border-radius: 5px;
+  box-sizing: border-box; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
 }

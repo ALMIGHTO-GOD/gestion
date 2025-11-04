@@ -1,0 +1,21 @@
+# --- ARCHIVOS DE USUARIO ---
+# Ignorar la carpeta de fotos/documentos que suben los usuarios
+/uploads/
+
+# --- LIBRERÍAS Y BASURA ---
+# Ignorar archivos comprimidos (como PHPMailer.zip)
+*.zip
+*.rar
+*.7z
+
+# --- BASURA DE NODE.JS (Del repo viejo) ---
+# Ignorar la carpeta de paquetes de Node
+/node_modules/
+package-lock.json
+npm-debug.log
+
+# --- ARCHIVOS DE SISTEMA OPERATIVO Y EDITOR ---
+.DS_Store
+Thumbs.db
+*.log
+/.vscode/
