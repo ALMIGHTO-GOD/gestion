@@ -12,6 +12,59 @@ if (!empty($error_bd)) {
     die("<main class='main-content'><p style='color: red;'>$error_bd</p></main></body></html>");
 }
 ?>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDIA SPROUTS - Dashboard</title>
+    <link rel="stylesheet" href="style.css" />     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        .main-header__user-actions { display: flex; align-items: center; gap: 20px; }
+        .user-greeting { color: #ffffff; font-weight: 500; }
+        .user-greeting a { color: #f0a0a0; text-decoration: none; }
+        .user-greeting a:hover { text-decoration: underline; }
+        .status-label {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background-color: #ddd;
+            color: #555;
+        }
+        /* Estilo para que las imágenes de las tarjetas se vean bien */
+        .project-card__image-container img {
+            width: 100%;
+            height: 250px; /* Dales una altura fija */
+            object-fit: cover; /* Esto evita que la imagen se estire */
+        }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="main-header__logo">MEDIA SPROUTS</div>
+      <nav class="main-header__nav">
+        <ul>
+          <li><a href="dashboard.php" class="active">Inicio</a></li>
+          <li><a href="Proyecto_en_espera.html">Proyectos Subidos</a></li> <?php if ($rol_usuario == 'admin'): ?>
+            <li><a href="admin_panel.php">Administracion</a></li>
+          <?php endif; ?>
+        </ul>
+      </nav>
+
+      <div class="main-header__user-actions">
+                <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</a>
+        <div class="user-greeting">
+            ¡Hola, <?php echo htmlspecialchars($nombre_usuario); ?>!
+            (<a href="logout.php">Salir</a>)
+        </div>
+      </div>
+    </header>
 
     <main class="main-content">
       <section class="projects-section">
