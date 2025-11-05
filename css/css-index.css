@@ -1,0 +1,375 @@
+:root {
+    --primary-color: #0056b3;     /* Azul principal (ahora fondo de página) */
+    --secondary-color: #004085;  /* Azul más oscuro (para header y tarjetas) */
+    --light-blue: #e0f2f7;      /* Azul muy claro (para botones y acentos) */
+    
+    --white: #ffffff;
+    --text-light: #f0f6fc;      /* Texto principal (casi blanco) */
+    --text-dark: #004085;       /* Texto oscuro (para usar sobre botones claros) */
+    
+    --border-color: #007bff;    /* Un borde azul más brillante para separar */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-light); 
+    line-height: 1.6;
+    background-color: var(--primary-color); 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--secondary-color); 
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+
+    /* --- NUEVOS ESTILOS PARA "PEGAR" EL MENÚ --- */
+    position: sticky; /* Le dice al navegador que se "pegue" */
+    top: 0;           /* Se pega en la parte superior (a 0px) */
+    width: 100%;      /* Asegura que ocupe todo el ancho */
+    z-index: 1000;  /* Se asegura de que esté por encima de todo el contenido */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white); 
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.nav-links a {
+    color: var(--text-light); 
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.nav-links .get-started {
+    background-color: var(--light-blue);  
+    color: var(--text-dark);              
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links .get-started:hover {
+    background-color: var(--white);
+}
+
+/* Hero Section */
+.hero {
+    background-color: transparent; 
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 86, 179, 0.85));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: var(--text-light); 
+}
+
+.hero-buttons .btn {
+    background-color: var(--light-blue); 
+    color: var(--text-dark);             
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: var(--white);
+}
+
+.hero-buttons .btn-secondary {
+    background-color: transparent;
+    color: var(--light-blue); 
+    border: 2px solid var(--light-blue);
+}
+
+.hero-buttons .btn-secondary:hover {
+    background-color: var(--light-blue);
+    color: var(--text-dark);
+}
+
+.hero-image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #003366; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 24px;
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+/* Sections */
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+/* === SECCIÓN "POR QUÉ ELEGIR" === */
+#why-choose-mediaconnect {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background-color: var(--secondary-color); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    background-color: #004a99; 
+}
+
+.feature-item .icon {
+    font-size: 50px;
+    color: var(--light-blue); 
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 24px;
+    color: var(--white); 
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: var(--text-light); 
+}
+
+/* === SECCIÓN "CÓMO FUNCIONA" (AHORA SÍ) === */
+#how-it-works {
+    background-color: var(--secondary-color); /* <-- Fondo azul oscuro */
+    border-radius: 8px;
+    padding: 80px 20px; /* <-- Padding que estaba en el HTML */
+    margin-top: 60px; /* <-- Margen que estaba en el HTML */
+}
+
+/* El .section-heading y .section-description ya tienen el color blanco/claro por defecto */
+
+.how-it-works-steps {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.step {
+    text-align: center;
+    max-width: 280px;
+}
+
+.step .step-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--light-blue); 
+    color: var(--text-dark);             
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto 20px auto;
+}
+
+.step h3 {
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* Call to Action */
+.call-to-action {
+    text-align: center;
+    padding: 80px 0;
+    background-color: transparent; 
+    margin-top: 60px;
+}
+
+.call-to-action h2 {
+    font-size: 38px;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.call-to-action p {
+    font-size: 20px;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.call-to-action .btn {
+    background-color: var(--light-blue);
+    color: var(--text-dark);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.call-to-action .btn:hover {
+    background-color: var(--white);
+}
+
+.call-to-action .btn-secondary {
+    background-color: transparent;
+    color: var(--light-blue);
+    border: 2px solid var(--light-blue);
+}
+
+.call-to-action .btn-secondary:hover {
+    background-color: var(--light-blue);
+    color: var(--text-dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color); 
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 20px;
+    }
+    .nav-links a {
+        margin: 0 10px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        margin: 10px 0;
+        box-sizing: border-box; 
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .how-it-works-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+    .step {
+        margin-bottom: 30px;
+    }
+    .call-to-action h2 {
+        font-size: 30px;
+    }
+    .call-to-action p {
+        font-size: 18px;
+    }
+}
