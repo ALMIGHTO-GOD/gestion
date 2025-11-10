@@ -1,0 +1,59 @@
+
+<!--
+
+<?php
+// --- VARIABLES DE CONTEXTO ---
+$pagina_actual = $pagina_actual ?? 'inicio'; // Evita error si no se define antes
+$rol_usuario = $rol_usuario ?? 'usuario';
+$nombre_usuario = $nombre_usuario ?? 'Invitado';
+?>
+
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDIA SPROUTS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/Panel_de_administracion.css">
+    <style>
+        .main-header__user-actions { display: flex; align-items: center; gap: 20px; }
+        .user-greeting { color: #ffffff; font-weight: 500; }
+        .user-greeting a { color: #f0a0a0; text-decoration: none; }
+        .user-greeting a:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="main-header__logo">MEDIA SPROUTS</div>
+
+        <nav class="main-header__nav">
+            <ul>
+                <li><a href="dashboard.php" class="<?= $pagina_actual === 'dashboard' ? 'active' : '' ?>">Inicio</a></li>
+                <li><a href="Proyecto_en_espera.html" class="<?= $pagina_actual === 'proyectos' ? 'active' : '' ?>">Proyectos Subidos</a></li>
+                <?php if ($rol_usuario === 'admin'): ?>
+                    <li><a href="admin_panel.php" class="<?= $pagina_actual === 'admin' ? 'active' : '' ?>">Administración</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+
+        <div class="main-header__user-actions">
+            <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</a>
+            <div class="user-greeting">
+                ¡Hola, <?= htmlspecialchars($nombre_usuario) ?>!
+                (<a href="logout.php">Salir</a>)
+            </div>
+        </div>
+    </header>
+</body>
+</html>

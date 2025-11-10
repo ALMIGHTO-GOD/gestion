@@ -71,3 +71,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+/* ---
+   =============================================
+   FILTRO DE BÚSQUEDA EN VIVO (Para Proyectos en Espera)
+   =============================================
+--- */
+
+// Espera a que todo el HTML esté cargado antes de correr el script
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. "El Vigilante": Encuentra la barra de búsqueda en la página
+    const searchBar = document.getElementById('search');
+
+    // 2. Revisamos si la barra de búsqueda EXISTE en esta página
+    //    (Esto evita errores en otras páginas como el dashboard)
+    if (searchBar) {
+        
+        // 3. Encuentra los elementos con los que vamos a trabajar
+        const countElement = document.getElementById('count');
+        const projectGrid = document.querySelector('.project-grid');
+        const projects = projectGrid.querySelectorAll('.project-card');
+
+        // 4. "El Oído": Escucha cada vez que el usuario levanta una tecla
+        searchBar.addEventListener('keyup', () => {
+            
+            // 5. "La Búsqueda": Agarra el texto y lo pone en minúsculas
+            const searchText = searchBar.value.toLowerCase();
+            let visibleCount = 0; // Un contador para el "Total:"
+
+            // 6. "El Filtro": Recorre CADA tarjeta de proyecto
+            projects.forEach(card => {
+                
+                // 7. Busca el texto DENTRO de la tarjeta (título y autor)
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const author = card.querySelector('.project-card__author').textContent.toLowerCase();
+                
+                // 8. "La Comparación": Revisa si el título O el autor incluyen el texto
+                const isVisible = title.includes(searchText) || author.includes(searchText);
+                
+                // 9. "El Veredicto": Si coincide, la MUESTRA. Si no, la ESCONDE.
+                card.style.display = isVisible ? 'block' : 'none';
+
+                if (isVisible) {
+                    visibleCount++; // Suma al contador si la tarjeta se ve
+                }
+            });
+
+            // 10. "El Conteo": Actualiza el número de "Total:"
+            if (countElement) {
+                countElement.textContent = visibleCount;
+            }
+        });
+    }
+});
