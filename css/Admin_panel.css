@@ -148,41 +148,52 @@ a {
   color: #f1f5f9;
 }
 
+/* --- Botones generales --- */
 .btn {
   padding: 8px 14px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-}
-
-.btn--search {
-  background-color: #38bdf8;
-  color: #0f172a;
   border: none;
 }
 
+/* 🔍 Buscar */
+.btn--search {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
 .btn--search:hover {
   background-color: #7dd3fc;
 }
 
+/* 🔺 Convertir en Admin (más rojo y vibrante) */
 .btn--admin {
-  background-color: #f87171;
+  background-color: #dc2626; /* rojo intenso */
   color: #fff;
-  border: none;
 }
-
 .btn--admin:hover {
-  background-color: #ef4444;
+  background-color: #b91c1c; /* rojo aún más oscuro */
 }
 
+/* 🔻 Quitar credenciales / Convertir en Usuario (mismo color que buscar) */
+.btn--user {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+.btn--user:hover {
+  background-color: #7dd3fc;
+}
+
+/* --- Tabla y mensajes --- */
 .tabla-usuarios {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
 }
 
-.tabla-usuarios th, .tabla-usuarios td {
+.tabla-usuarios th,
+.tabla-usuarios td {
   padding: 10px;
   border-bottom: 1px solid #334155;
   text-align: left;
@@ -191,42 +202,6 @@ a {
 .etiqueta-admin {
   color: #38bdf8;
   font-weight: 600;
-}
-
-.sin-resultados {
-  text-align: center;
-  margin-top: 20px;
-  color: #94a3b8;
-}
-
-.mensaje {
-  background-color: #22c55e;
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-/* Convertir en Usuario */
-.btn--user {
-  background-color: #34d399;
-  color: #0f172a;
-}
-.btn--user:hover {
-  background-color: #6ee7b7;
-}
-
-.tabla-usuarios {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-.tabla-usuarios th, .tabla-usuarios td {
-  padding: 10px;
-  border-bottom: 1px solid #334155;
-  text-align: left;
 }
 
 .sin-resultados {
