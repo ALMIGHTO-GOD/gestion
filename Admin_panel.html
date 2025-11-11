@@ -1,0 +1,130 @@
+<?php
+// --- Conexión a base de datos ---
+$conexion = new mysqli("localhost", "root", "", "tu_base_de_datos");
+if ($conexion->connect_error) {
+  die("Error de conexión: " . $conexion->connect_error);
+}
+
+// --- Si se envía una acción de cambio de rol ---
+if (isset($_POST['cambiar_rol'])) {
+  $usuario_id = $_POST['usuario_id'];
+  $nuevo_rol = $_POST['nuevo_rol']; // puede ser 'admin' o 'usuario'
+
+  $conexion->query("UPDATE usuarios SET rol = '$nuevo_rol' WHERE id = '$usuario_id'");
+  $mensaje = "Rol actualizado correctamente a '$nuevo_rol'.";
+}
+
+// --- Buscar usuario ---
+$resultado = null;
+if (isset($_GET['q'])) {
+  $busqueda = $conexion->real_escape_string($_GET['q']);
+  $resultado = $conexion->query("
+      SELECT id, nombre, correo, rol 
+      FROM usuarios 
+      WHERE nombre LIKE '%$busqueda%' 
+      OR correo LIKE '%$busqueda%'
+  ");
+}
+?>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDIA SPROUTS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/Admin_panel.css">
+    <style>
+        .main-header__user-actions { display: flex; align-items: center; gap: 20px; }
+        .user-greeting { color: #ffffff; font-weight: 500; }
+        .user-greeting a { color: #f0a0a0; text-decoration: none; }
+        .user-greeting a:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="main-header__logo">MEDIA SPROUTS</div>
+
+        <nav class="main-header__nav">
+            <ul>
+                <li><a href="dashboard.php" class="<?= $pagina_actual === 'dashboard' ? 'active' : '' ?>">Inicio</a></li>
+                <li><a href="Proyecto_en_espera.html" class="<?= $pagina_actual === 'proyectos' ? 'active' : '' ?>">Proyectos Subidos</a></li>
+                <?php if ($rol_usuario === 'admin'): ?>
+                    <li><a href="admin_panel.php" class="<?= $pagina_actual === 'admin' ? 'active' : '' ?>">Administración</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+
+        <div class="main-header__user-actions">
+            <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</a>
+            <div class="user-greeting">
+                ¡Hola, <?= htmlspecialchars($nombre_usuario) ?>!
+                (<a href="logout.php">Salir</a>)
+            </div>
+        </div>
+    </header>
+<section class="user-management">
+  <h2>Gestión de usuarios</h2>
+
+  <!-- Mostrar mensaje de acción -->
+  <?php if (isset($mensaje)): ?>
+    <p class="mensaje"><?= htmlspecialchars($mensaje) ?></p>
+  <?php endif; ?>
+
+  <!-- 🔍 Buscador -->
+  <form method="get" class="user-search-form">
+    <input type="text" name="q" placeholder="Buscar usuario..." class="user-search-input" required>
+    <button type="submit" class="btn btn--search">Buscar</button>
+  </form>
+
+  <!-- 🔽 Resultados -->
+  <?php if ($resultado && $resultado->num_rows > 0): ?>
+    <table class="tabla-usuarios">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Rol actual</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php while ($fila = $resultado->fetch_assoc()): ?>
+          <tr>
+            <td><?= htmlspecialchars($fila['nombre']) ?></td>
+            <td><?= htmlspecialchars($fila['correo']) ?></td>
+            <td><?= htmlspecialchars($fila['rol']) ?></td>
+            <td>
+              <form method="post" style="display:inline;">
+                <input type="hidden" name="usuario_id" value="<?= $fila['id'] ?>">
+                <?php if ($fila['rol'] === 'admin'): ?>
+                  <input type="hidden" name="nuevo_rol" value="usuario">
+                  <button type="submit" name="cambiar_rol" class="btn btn--user">quitar credenciales</button>
+                <?php else: ?>
+                  <input type="hidden" name="nuevo_rol" value="admin">
+                  <button type="submit" name="cambiar_rol" class="btn btn--admin">Dar credenciales</button>
+                <?php endif; ?>
+              </form>
+            </td>
+          </tr>
+        <?php endwhile; ?>
+      </tbody>
+    </table>
+  <?php elseif (isset($_GET['q'])): ?>
+    <p class="sin-resultados">No se encontraron usuarios.</p>
+  <?php endif; ?>
+
+</section>
+
+
+    
+</body>
+</html>

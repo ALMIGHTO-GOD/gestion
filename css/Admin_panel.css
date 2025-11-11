@@ -1,0 +1,245 @@
+/* ==========================================================
+   ESTILOS GENERALES (solo lo necesario para el header)
+   ========================================================== */
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #0f172a; /* Azul oscuro de fondo original */
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================
+   ENCABEZADO (HEADER) Y NAVEGACIÓN
+   ========================================================== */
+
+/* Evita que los textos del header se partan en dos líneas */
+.user-greeting,
+.active,
+.main-header__logo,
+a {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Espacio entre el saludo y el enlace "Salir" */
+.user-greeting a {
+  margin-left: 5px;
+}
+
+/* --- Contenedor principal del header --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  background-color: #1e293b; /* Fondo del header */
+  border-bottom: 1px solid #334155;
+}
+
+/* Logo del sitio */
+.main-header__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* --- Navegación principal --- */
+.main-header__nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header__nav a {
+  color: #94a3b8; /* Color de enlace inactivo */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-header__nav a:hover {
+  color: #ffffff;
+}
+
+/* Enlace activo (pestaña seleccionada) */
+.main-header__nav a.active {
+  color: #ffffff;
+  font-weight: 700;
+  border-bottom: 3px solid #38bdf8; /* Línea azul brillante */
+  padding-bottom: 6px;
+}
+
+/* --- Acciones del usuario (botón + saludo) --- */
+.main-header__user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Saludo del usuario */
+.user-greeting {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.user-greeting a {
+  color: #f0a0a0; /* Rojo para 'Salir' */
+  text-decoration: none;
+}
+
+.user-greeting a:hover {
+  text-decoration: underline;
+}
+
+/* --- Botón principal (ej. "+ Nuevo Proyecto") --- */
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background-color: #38bdf8;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.btn--primary:hover {
+  background-color: #7dd3fc;
+  transform: translateY(-2px);
+}
+
+/* --- Sección de gestión de usuarios --- */
+.user-management {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-management h2 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.user-search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-search-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn--search {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+}
+
+.btn--search:hover {
+  background-color: #7dd3fc;
+}
+
+.btn--admin {
+  background-color: #f87171;
+  color: #fff;
+  border: none;
+}
+
+.btn--admin:hover {
+  background-color: #ef4444;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tabla-usuarios th, .tabla-usuarios td {
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+  text-align: left;
+}
+
+.etiqueta-admin {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.sin-resultados {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+.mensaje {
+  background-color: #22c55e;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Convertir en Usuario */
+.btn--user {
+  background-color: #34d399;
+  color: #0f172a;
+}
+.btn--user:hover {
+  background-color: #6ee7b7;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tabla-usuarios th, .tabla-usuarios td {
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+  text-align: left;
+}
+
+.sin-resultados {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+.mensaje {
+  background-color: #22c55e;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 10px;
+}
