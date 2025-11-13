@@ -53,6 +53,7 @@ if ($resultado_proyectos) {
                 $ruta_foto = htmlspecialchars($proyecto['url_foto']); 
             }
     ?>
+        <a href="view_project.php?id=<?php echo $proyecto['id_proyecto']; ?>" class="project-card-link">
             <article class="project-card">
                 <div class="project-card__image-container">
                     <img src="<?php echo $ruta_foto; ?>" alt="<?php echo htmlspecialchars($proyecto['nombre_proyecto']); ?>" />
@@ -66,6 +67,7 @@ if ($resultado_proyectos) {
                     <span class="status-label"><?php echo htmlspecialchars($proyecto['nombre_estado']); ?></span>
                 </div>
             </article>
+        </a>
     <?php
         endwhile; 
     else:

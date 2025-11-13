@@ -1,6 +1,6 @@
 # --- ARCHIVOS DE USUARIO ---
 # Ignorar la carpeta de fotos/documentos que suben los usuarios
-/uploads/
+/lib/uploads/
 
 # --- LIBRERÍAS Y BASURA ---
 # Ignorar archivos comprimidos (como PHPMailer.zip)

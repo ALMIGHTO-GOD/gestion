@@ -47,20 +47,21 @@ if ($conn->connect_error) {
       <a class="main-header__logo" href="dashboard.php" style="color:white; text-decoration:none;">MEDIA SPROUTS</a>
       <nav class="main-header__nav">
         <ul>
-                    <li><a href="dashboard.php" <?php if (isset($pagina_actual) && $pagina_actual == 'dashboard') echo 'class="active"'; ?>>Dashboard</a></li>
+                    
+            <li><a href="dashboard.php" <?php if (isset($pagina_actual) && $pagina_actual == 'dashboard') echo 'class="active"'; ?>>Inicio</a></li>
            <?php if ($rol_usuario == 'usuario'): ?>
             <li><a href="proyecto_en_espera.php" <?php if (isset($pagina_actual) && $pagina_actual == 'espera') echo 'class="active"'; ?>>Proyectos en espera</a></li>
           <?php endif; ?>
 
           <?php if ($rol_usuario == 'admin'): ?>
             <li><a href="review_projects.php" <?php if (isset($pagina_actual) && $pagina_actual == 'revisar') echo 'class="active"'; ?>>Revisar Proyectos</a></li>
-            <li><a href="admin_panel.php" <?php if (isset($pagina_actual) && $pagina_actual == 'admin') echo 'class="active"'; ?>>Admin Panel</a></li>
+            <li><a href="Admin_panel.php" <?php if (isset($pagina_actual) && $pagina_actual == 'admin') echo 'class="active"'; ?>>Panel de Administración</a></li>
           <?php endif; ?>
         </ul>
       </nav>
 
       <div class="main-header__user-actions">
-        <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ New Project</a>
+        <a href="submit_project.html" class="btn btn--primary" id="new-project-btn">+ Nuevo Proyecto</a>
         <div class="user-greeting">
             ¡Hola, <?php echo htmlspecialchars($nombre_usuario); ?>!
             (<a href="logout.php">Salir</a>)

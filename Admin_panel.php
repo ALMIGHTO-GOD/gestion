@@ -1,105 +1,177 @@
 <?php
-// --- Conexión a base de datos ---
-$conexion = new mysqli("localhost", "root", "", "media_sprouts");
-if ($conexion->connect_error) {
-  die("Error de conexión: " . $conexion->connect_error);
+// --- 1. DEFINIR QUÉ PÁGINA ES ---
+$pagina_actual = 'admin'; 
+
+// --- 2. INCLUIR EL ENCABEZADO ---
+require_once 'header.php';
+// (El header ya nos da el $id_usuario del admin logueado)
+
+// --- 3. GUARDIÁN DE ADMIN ---
+if ($rol_usuario != 'admin') {
+    header("Location: dashboard.php");
+    exit();
 }
 
-// --- Si se envía una acción de cambio de rol ---
+if (!empty($error_bd)) {
+    die("<main class='main-content'><p style='color: red;'>$error_bd</p></main></body></html>");
+}
+
+// --- 4. LÓGICA DE ACCIONES DEL ADMIN ---
+
+// --- ACCIÓN A: CAMBIAR ROL ---
 if (isset($_POST['cambiar_rol'])) {
-  $usuario_id = intval($_POST['usuario_id']);
-  $nuevo_rol = $_POST['nuevo_rol'] === 'admin' ? 'admin' : 'usuario';
+    $usuario_id = intval($_POST['usuario_id']);
+    $nuevo_rol = $_POST['nuevo_rol'] === 'admin' ? 'admin' : 'usuario';
 
-  $conexion->query("UPDATE Usuarios SET rol = '$nuevo_rol' WHERE id_usuario = $usuario_id");
-  $mensaje = "Rol actualizado correctamente a '$nuevo_rol'.";
+    if ($usuario_id != $id_usuario) { // No puedes cambiar tu propio rol
+        $stmt_rol = $conn->prepare("UPDATE Usuarios SET rol = ? WHERE id_usuario = ?");
+        $stmt_rol->bind_param("si", $nuevo_rol, $usuario_id);
+        $stmt_rol->execute();
+        $mensaje = "Rol actualizado correctamente a '$nuevo_rol'.";
+        $stmt_rol->close();
+    } else {
+        $mensaje = "Error: No puedes cambiar tu propio rol.";
+    }
 }
 
-// --- Buscar usuario ---
+// --- ACCIÓN B: CAMBIAR ESTADO (TEMPORAL) ---
+if (isset($_POST['cambiar_estado'])) {
+    $usuario_id = intval($_POST['usuario_id']);
+    $nuevo_estado = $_POST['nuevo_estado'] === 'activo' ? 'activo' : 'suspendido';
+
+    if ($usuario_id != $id_usuario) { // No puedes desactivarte a ti mismo
+        $stmt_estado = $conn->prepare("UPDATE Usuarios SET estado_cuenta = ? WHERE id_usuario = ?");
+        $stmt_estado->bind_param("si", $nuevo_estado, $usuario_id);
+        $stmt_estado->execute();
+        $mensaje = "Estado de la cuenta actualizado a '$nuevo_estado'.";
+        $stmt_estado->close();
+    } else {
+        $mensaje = "Error: No puedes cambiar tu propio estado de cuenta.";
+    }
+}
+
+// --- ACCIÓN C: ELIMINAR USUARIO (PERMANENTE) ---
+if (isset($_POST['eliminar_usuario'])) {
+    $usuario_id = intval($_POST['usuario_id']);
+    if ($usuario_id != $id_usuario) { // No puedes eliminarte a ti mismo
+        $stmt_del = $conn->prepare("DELETE FROM Usuarios WHERE id_usuario = ?");
+        $stmt_del->bind_param("i", $usuario_id);
+        $stmt_del->execute();
+        $mensaje = "Usuario eliminado permanentemente.";
+        $stmt_del->close();
+    } else {
+        $mensaje = "Error: No puedes eliminarte a ti mismo.";
+    }
+}
+
+
+// --- 5. LÓGICA DE BÚSQUEDA (Modificada para jalar 'estado_cuenta') ---
 $resultado = null;
-if (isset($_GET['q'])) {
-  $busqueda = $conexion->real_escape_string($_GET['q']);
-  $resultado = $conexion->query("
-      SELECT id_usuario, nombre_completo, correo, rol 
-      FROM Usuarios 
-      WHERE nombre_completo LIKE '%$busqueda%' 
-      OR correo LIKE '%$busqueda%'
-  ");
+$busqueda_activa = isset($_GET['q']) && !empty(trim($_GET['q']));
+
+// Preparamos la consulta base (con la nueva columna)
+$sql_base = "SELECT id_usuario, nombre_completo, correo, rol, estado_cuenta 
+             FROM Usuarios";
+
+if ($busqueda_activa) {
+    // SI HAY BÚSQUEDA, FILTRAMOS (Y EXCLUIMOS AL ADMIN ACTUAL)
+    $busqueda_query = "%" . $_GET['q'] . "%"; 
+    $sql = $sql_base . " WHERE (nombre_completo LIKE ? OR correo LIKE ?) AND id_usuario != ?";
+    $stmt_busqueda = $conn->prepare($sql);
+    $stmt_busqueda->bind_param("ssi", $busqueda_query, $busqueda_query, $id_usuario);
+
+} else {
+    // SI NO HAY BÚSQUEDA, MOSTRAMOS TODOS (MENOS AL ADMIN ACTUAL)
+    $sql = $sql_base . " WHERE id_usuario != ?";
+    $stmt_busqueda = $conn->prepare($sql);
+    $stmt_busqueda->bind_param("i", $id_usuario);
 }
+
+$stmt_busqueda->execute();
+$resultado = $stmt_busqueda->get_result();
+
 ?>
 
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MEDIA SPROUTS - Panel de Administración</title>
+<title>Admin Panel - MEDIA SPROUTS</title>
 
-  <!-- 🔗 Tu archivo CSS externo -->
-  <link rel="stylesheet" href="css/Admin_panel.css" />
-    <style>
-        .main-header__user-actions { display: flex; align-items: center; gap: 20px; }
-        .user-greeting { color: #ffffff; font-weight: 500; }
-        .user-greeting a { color: #f0a0a0; text-decoration: none; }
-        .user-greeting a:hover { text-decoration: underline; }
-    </style>  
-</head>
+<main class="project-container">
+  <h1>Gestión de Usuarios</h1>
+  <p class="subtitle">Panel para buscar usuarios y asignar roles.</p>
 
-<body>
-  <header class="main-header">
-    <div class="main-header__logo">MEDIA SPROUTS</div>
-    <div>Panel de administración</div>
-  </header>
+    <?php if (isset($mensaje)): ?>
+    <p style="color: #38bdf8; font-weight: bold;"><?php echo htmlspecialchars($mensaje); ?></p>
+  <?php endif; ?>
 
-  <section class="user-management">
-    <h2>Gestión de usuarios</h2>
+    <form method="get" class="search-bar" action="Admin_panel.php">
+    <input type="text" name="q" id="search" placeholder="Buscar usuario por nombre o correo..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>">
+    <button type="submit" class="btn btn--primary">Buscar</button>
+  </form>
 
-    <!-- Mostrar mensaje de acción -->
-    <?php if (isset($mensaje)): ?>
-      <p class="mensaje"><?= htmlspecialchars($mensaje) ?></p>
-    <?php endif; ?>
+    <?php if ($resultado && $resultado->num_rows > 0): ?>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nombre completo</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Estado</th>           <th style="width: 35%;">Acciones</th>         </tr>
+      </thead>
+      <tbody>
+        <?php while ($fila = $resultado->fetch_assoc()): ?>
+                      <tr <?php if ($fila['estado_cuenta'] == 'suspendido') echo 'style="background-color: #444;"'; ?>>
+            <td><?php echo htmlspecialchars($fila['nombre_completo']); ?></td>
+            <td><?php echo htmlspecialchars($fila['correo']); ?></td>
+            <td><strong><?php echo htmlspecialchars($fila['rol']); ?></strong></td>
+            <td><strong><?php echo htmlspecialchars($fila['estado_cuenta']); ?></strong></td>
+            <td class="cell-actions">
+                <?php $queryString = isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>
+              <div class="actions-grid-container"> 
+                <form method="post" class="admin-action-form" action="Admin_panel.php?q=<?php echo $queryString; ?>">
+                <input type="hidden" name="usuario_id" value="<?php echo $fila['id_usuario']; ?>">
+                <?php if ($fila['rol'] === 'admin'): ?>
+                  <input type="hidden" name="nuevo_rol" value="usuario">
+                  <button type="submit" name="cambiar_rol" class="btn-login btn-admin-action btn-warn">Quitar Credenciales</button>
+                <?php else: ?>
+                  <input type="hidden" name="nuevo_rol" value="admin">
+                  <button type="submit" name="cambiar_rol" class="btn-login btn-admin-action btn-success">Dar Credenciales</button>
+                <?php endif; ?>
+              </form>
+                
+                <form method="post" class="admin-action-form" action="Admin_panel.php?q=<?php echo $queryString; ?>">
+                <input type="hidden" name="usuario_id" value="<?php echo $fila['id_usuario']; ?>">
+                <?php if ($fila['estado_cuenta'] === 'activo'): ?>
+                  <input type="hidden" name="nuevo_estado" value="suspendido">
+                  <button type="submit" name="cambiar_estado" class="btn-login btn-admin-action btn-warn">Desactivar</button>
+                <?php else: ?>
+                  <input type="hidden" name="nuevo_estado" value="activo">
+                  <button type="submit" name="cambiar_estado" class="btn-login btn-admin-action btn-success">Activar</button>
+                <?php endif; ?>
+              </form>
+                
+                <form method="post" class="admin-action-form" 
+                      action="Admin_panel.php?q=<?php echo $queryString; ?>"
+                      onsubmit="return confirm('¿Estás seguro de que quieres ELIMINAR a este usuario? Esta acción es PERMANENTE y no se puede deshacer.');">
+                <input type="hidden" name="usuario_id" value="<?php echo $fila['id_usuario']; ?>">
+                <button type="submit" name="eliminar_usuario" class="btn-login btn-admin-action btn-danger">Eliminar</button>
+              </form>
+              </div>
+            </td>
+          </tr>
+        <?php endwhile; ?>
+      </tbody>
+    </table>
+  <?php elseif ($busqueda_activa): ?>
+    <p style="color: white; font-size: 1.2rem; text-align: center;">No se encontraron usuarios.</p>
+  <?php else: ?>
+    <p style="color: white; font-size: 1.2rem; text-align: center;">No hay otros usuarios registrados en el sistema.</p>
+  <?php endif; ?>
+</main>
 
-    <!-- 🔍 Buscador -->
-    <form method="get" class="user-search-form">
-      <input type="text" name="q" placeholder="Buscar usuario por nombre o correo..." class="user-search-input" required>
-      <button type="submit" class="btn btn--search">Buscar</button>
-    </form>
-
-    <!-- 🔽 Resultados -->
-    <?php if ($resultado && $resultado->num_rows > 0): ?>
-      <table class="tabla-usuarios">
-        <thead>
-          <tr>
-            <th>Nombre completo</th>
-            <th>Correo</th>
-            <th>Rol actual</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while ($fila = $resultado->fetch_assoc()): ?>
-            <tr>
-              <td><?= htmlspecialchars($fila['nombre_completo']) ?></td>
-              <td><?= htmlspecialchars($fila['correo']) ?></td>
-              <td><?= htmlspecialchars($fila['rol']) ?></td>
-              <td>
-                <form method="post" style="display:inline;">
-                  <input type="hidden" name="usuario_id" value="<?= $fila['id_usuario'] ?>">
-                  <?php if ($fila['rol'] === 'admin'): ?>
-                    <input type="hidden" name="nuevo_rol" value="usuario">
-                    <button type="submit" name="cambiar_rol" class="btn btn--user">Quitar credenciales</button>
-                  <?php else: ?>
-                    <input type="hidden" name="nuevo_rol" value="admin">
-                    <button type="submit" name="cambiar_rol" class="btn btn--admin">Dar credenciales</button>
-                  <?php endif; ?>
-                </form>
-              </td>
-            </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php elseif (isset($_GET['q'])): ?>
-      <p class="sin-resultados">No se encontraron usuarios.</p>
-    <?php endif; ?>
-  </section>
 </body>
 </html>
+<?php
+if (isset($stmt_busqueda)) $stmt_busqueda->close();
+$conn->close();
+
+ob_end_flush(); 
+?>

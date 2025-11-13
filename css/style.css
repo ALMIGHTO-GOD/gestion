@@ -52,7 +52,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5%; 
+  padding: 20px; 
   margin-top: -2rem;
   background-color: #1e293b; /* Fondo de header */
   border-bottom: 1px solid #334155;
@@ -76,8 +76,8 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
-  margin: 0;
-  padding: 0;
+  margin-top: 1rem;
+  padding: 0 !;
 }
 
 .main-header__nav a {
@@ -180,6 +180,7 @@ body {
   border: 1px solid #334155;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  width: 100%;
 }
 
 .project-card:hover {
@@ -485,4 +486,331 @@ body {
 .modal-description {
   color: #f1f5f9;
   line-height: 1.6;
+}
+/* ---
+   =============================================
+   8. ESTILOS PARA BOTONES DE ADMIN PANEL (¡TU IDEA!)
+   =============================================
+--- */
+
+/* 1. El "Corral" (Tu idea de 3 columnas) */
+.actions-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+  
+  /* ¡AQUÍ ESTÁ LA LÍNEA QUE FALTABA! */
+  /* Alinea los 3 formularios al centro verticalmente */
+  align-items: center !important; 
+}
+
+/* ... (El resto de tus reglas se quedan igual) ... */
+
+/* 2. El formulario ya no necesita ser 'inline' */
+.admin-action-form {
+  margin: 0; /* Quitamos márgenes extra */
+}
+
+/* 3. El botón AHORA SÍ puede ocupar el 100%
+      (porque será el 100% de su "columna", no de la celda)
+*/
+.admin-table .btn-login,
+.btn-admin-action {
+  width: 100% !important; /* ¡Que ocupe toda su columna! */
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  box-sizing: border-box; /* Súper importante para que el padding no rompa la reja */
+  height: 55px;
+}
+
+/* Colores de los botones (estos se quedan igual) */
+.btn-success {
+  background-color: #22c55e;
+  color: white;
+}
+.btn-success:hover {
+  background-color: #16a34a;
+}
+.btn-warn {
+  background-color: #f59e0b;
+  color: white;
+}
+.btn-warn:hover {
+  background-color: #d97706;
+}
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  margin-top: 17px;
+}
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+/* ---
+   =============================================
+   9. ESTILOS PÁGINA "VER PROYECTO" (view_project.php)
+   =============================================
+--- */
+
+/* Contenedor principal de la página */
+.project-view-container {
+  width: 90%;
+  max-width: 900px; /* Más angosto para leer mejor */
+  margin: 40px auto;
+  color: #f1f5f9;
+}
+
+.project-view-header {
+  border-bottom: 2px solid #334155;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.project-view-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.project-view-meta {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+.project-view-meta .status-label {
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+/* ¡LA CAJA DE ADMIN! */
+.admin-info-box {
+  background-color: #fef9c3; /* Amarillo pálido */
+  color: #713f12; /* Texto café oscuro */
+  border: 1px solid #fde047; /* Borde amarillo */
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 30px;
+}
+.admin-info-box h3 {
+  margin: 0 0 10px 0;
+  color: #713f12;
+}
+.admin-info-box p {
+  margin: 5px 0;
+}
+
+/* Contenido del proyecto (descripción y archivos) */
+.project-view-content {
+  margin-bottom: 40px;
+}
+.project-view-content h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+  margin: 30px 0 20px 0;
+}
+.project-view-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+/* Lista de archivos e imagen */
+.project-files-list {
+  list-style: none;
+  padding: 0;
+}
+.project-files-list li {
+  margin-bottom: 20px;
+}
+.project-view-image {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+/* Re-usamos el botón azul */
+.project-files-list .btn--primary {
+    text-decoration: none;
+}
+
+
+/* --- SECCIÓN DE COMENTARIOS --- */
+.comment-section {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 2rem;
+}
+.comment-section h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+/* Formulario de comentario nuevo */
+.comment-form {
+  margin-bottom: 30px;
+}
+/* Reusamos las clases .form-group y .btn-login del formulario */
+.comment-form textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9; 
+  border-radius: 5px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Lista de comentarios existentes */
+.comment-bubble {
+  background-color: #334155;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 15px;
+}
+.comment-author {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.comment-author strong {
+  color: #ffffff;
+  font-size: 1rem;
+}
+.comment-author .comment-date {
+  color: #94a3b8;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+/* ¡LA ETIQUETA DE ADMIN! */
+.admin-tag {
+  background-color: #fde047;
+  color: #713f12;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+.comment-bubble p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+a.project-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+/* ---
+   =============================================
+   10. ESTILOS PANEL ADMIN (view_project.php)
+   =============================================
+--- */
+
+/* El panel de acción nuevo */
+.admin-action-panel {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 30px;
+}
+
+.admin-action-panel h3 {
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 15px;
+}
+
+/* El menú desplegable (select) */
+.admin-select {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9; 
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Reusamos el botón de login */
+.admin-action-panel .btn-login {
+    width: auto; /* Para que no ocupe el 100% */
+}
+/* ---
+   =============================================
+   11. ESTILOS BOTÓN ELIMINAR COMENTARIO (¡CORREGIDO CON FLEXBOX!)
+   =============================================
+--- */
+
+/* 1. Convertimos el contenedor del autor en una caja flexible */
+.comment-author {
+  display: flex;         /* ¡La magia! Pone todo en fila */
+  align-items: center;   /* Alinea todo verticalmente al centro */
+  margin-bottom: 10px;
+  gap: 10px;             /* Un respiro entre el nombre, tag y fecha */
+}
+
+/* 2. El formulario ya no "flota" */
+.delete-comment-form {
+  /* ¡Esta es la clave! Empuja el formulario 
+     hasta el final de la fila (a la derecha) */
+  margin-left: auto; 
+}
+
+/* 3. El botón (se queda igual) */
+.delete-comment-btn {
+  background-color: transparent;
+  border: 1px solid #ef4444; 
+  color: #ef4444;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-comment-btn:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* 4. Ya NO necesitamos el "clearfix hack" (el .comment-author::after)
+      porque Flexbox lo arregla todo.
+*/
+/* ---
+   =============================================
+   12. ESTILOS PANEL USUARIO (view_project.php)
+   =============================================
+--- */
+
+.user-action-panel {
+  background-color: #334155; /* Un gris/azul diferente al de admin */
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 30px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-action-panel p {
+  margin: 0;
+  padding-right: 20px;
+}
+
+.user-action-panel .btn-login {
+  width: auto; /* Para que el botón no ocupe el 100% */
+  flex-shrink: 0; /* Evita que el botón se encoja */
 }
