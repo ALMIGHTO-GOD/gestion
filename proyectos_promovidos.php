@@ -82,7 +82,7 @@ if ($resultado_promovidos) {
         <article class="promoted-card">
           <div class="promoted-card__thumbnail">
             <img src="<?php echo $thumbnail_url; ?>" alt="<?php echo htmlspecialchars($promovido['nombre_proyecto']); ?>">
-            <div class="play-overlay" onclick="openVideoModal('<?php echo $embed_url; ?>', '<?php echo htmlspecialchars($promovido['nombre_proyecto']); ?>', '<?php echo $tipo; ?>')">>
+            <div class="play-overlay" onclick="openVideoModal('<?php echo $embed_url; ?>', '<?php echo htmlspecialchars($promovido['nombre_proyecto']); ?>', '<?php echo $tipo; ?>')">
               <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
                 <path d="M8 5v14l11-7z"/>
               </svg>
@@ -95,12 +95,15 @@ if ($resultado_promovidos) {
             <p class="description"><?php echo htmlspecialchars($promovido['descripcion_breve']); ?></p>
             
             <div class="promoted-card__actions">
+              <?php if ($tipo == 'enlace_youtube'): ?>
               <a href="<?php echo htmlspecialchars($video_url); ?>" target="_blank" class="btn-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
                   <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2v-7h-2v7z"/>
                 </svg>
                 Ver en YouTube
               </a>
+              <?php endif; ?>
+              
               <button onclick="openVideoModal('<?php echo $embed_url; ?>', '<?php echo htmlspecialchars($promovido['nombre_proyecto']); ?>', '<?php echo $tipo; ?>')" class="btn-play">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
                   <path d="M8 5v14l11-7z"/>
@@ -206,6 +209,7 @@ if ($resultado_promovidos) {
   font-size: 1.5rem;
   color: #ffffff;
   margin: 0 0 8px 0;
+  padding-right: 0;
 }
 
 .promoted-card__content .author {
@@ -358,6 +362,9 @@ function openVideoModal(videoUrl, title, tipo) {
     video.autoplay = true;
     video.style.width = '100%';
     video.style.height = '100%';
+    video.style.position = 'absolute'; // IMPORTANTE: Para llenar el contenedor responsivo
+    video.style.top = '0';
+    video.style.left = '0';
     video.src = videoUrl;
     videoContainer.appendChild(video);
     

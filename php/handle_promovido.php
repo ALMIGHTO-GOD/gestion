@@ -92,10 +92,7 @@ if ($id_proyecto <= 0) {
     die("Error: ID de proyecto inválido.");
 }
 
-// Validar URL
-if (empty($url_multimedia) || !filter_var($url_multimedia, FILTER_VALIDATE_URL)) {
-    die("Error: URL de video inválida.");
-}
+// (Validación redundante eliminada)
 
 // Verificar que el proyecto existe
 $sql_check = "SELECT id_proyecto FROM Proyectos WHERE id_proyecto = ?";
