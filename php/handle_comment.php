@@ -11,7 +11,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -33,7 +33,7 @@ if (isset($_POST['publicar_comentario']) && !empty(trim($_POST['comentario']))) 
     
     if ($stmt_insert->execute()) {
         // ¡Éxito! Lo mandamos de regreso a la página del proyecto
-        header("Location: view_project.php?id=" . $id_proyecto . "&comment=success");
+        header("Location: ../view_project.php?id=" . $id_proyecto . "&comment=success");
         exit();
     } else {
         die("Error al guardar el comentario.");
@@ -41,7 +41,7 @@ if (isset($_POST['publicar_comentario']) && !empty(trim($_POST['comentario']))) 
 } else {
     // Si mandó el formulario vacío, solo lo regresamos
     $id_proyecto = intval($_POST['id_proyecto']);
-    header("Location: view_project.php?id=" . $id_proyecto . "&comment=error");
+    header("Location: ../view_project.php?id=" . $id_proyecto . "&comment=error");
     exit();
 }
 ?>

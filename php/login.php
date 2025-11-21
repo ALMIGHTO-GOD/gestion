@@ -7,7 +7,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307; // El puerto que configuraste
+$puerto = 3306; // El puerto que configuraste
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -41,16 +41,16 @@ if ($resultado->num_rows === 1) {
         $_SESSION['rol_usuario'] = $usuario['rol'];
         
         // Redirigir al panel principal (el dashboard)
-        header("Location: dashboard.php");
+        header("Location: ../dashboard.php");
         exit(); // Asegura que el script se detenga
         
     } else {
         // Contraseña incorrecta
-        die("Error: Contraseña incorrecta. <a href='login.html'>Inténtalo de nuevo</a>.");
+        die("Error: Contraseña incorrecta. <a href='../login.html'>Inténtalo de nuevo</a>.");
     }
 } else {
     // Usuario no encontrado
-    die("Error: Usuario no encontrado. <a href='registro.html'>Regístrate aquí</a>.");
+    die("Error: Usuario no encontrado. <a href='../registro.html'>Regístrate aquí</a>.");
 }
 
 $stmt->close();

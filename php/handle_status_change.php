@@ -12,7 +12,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -53,7 +53,7 @@ if (isset($_POST['cambiar_estado'])) {
         
         // ¡ÉXITO! Lo mandamos de regreso a la página de revisión.
         // Como el proyecto ya no estará "Pendiente", desaparecerá de la lista.
-        header("Location: review_projects.php?status=changed");
+        header("Location: ../review_projects.php?status=changed");
         exit();
 
     } catch (Exception $e) {
@@ -64,7 +64,7 @@ if (isset($_POST['cambiar_estado'])) {
 
 } else {
     // Si llegó aquí por error, lo regresamos
-    header("Location: review_projects.php");
+    header("Location: ../review_projects.php");
     exit();
 }
 ?>

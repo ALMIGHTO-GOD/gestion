@@ -77,7 +77,7 @@ $todos_los_estados = $conn->query("SELECT id_estado, nombre_estado FROM Estados_
         </div>
         <div class="admin-action-panel">
             <h3>Panel de Administrador</h3>
-            <form action="handle_status_change.php" method="POST">
+            <form action="php/handle_status_change.php" method="POST">
                 <input type="hidden" name="id_proyecto" value="<?php echo $id_proyecto; ?>">
                 <div class="form-group">
                     <label for="id_nuevo_estado">Cambiar estado del proyecto a:</label>
@@ -107,14 +107,14 @@ $todos_los_estados = $conn->query("SELECT id_estado, nombre_estado FROM Estados_
             if ($proyecto['id_estado_actual'] == 7): 
             ?>
                 <p>Este proyecto está archivado. ¿Quieres restaurarlo?</p>
-                <form action="handle_archive.php" method="POST">
+                <form action="php/handle_archive.php" method="POST">
                     <input type="hidden" name="id_proyecto" value="<?php echo $id_proyecto; ?>">
                     <input type="hidden" name="accion" value="restaurar">
                     <button type="submit" name="cambiar_estado_usuario" class="btn-login btn-success">Restaurar Proyecto</button>
                 </form>
             <?php else: ?>
                 <p>Si ya no quieres que este proyecto sea visible, puedes archivarlo.</p>
-                <form action="handle_archive.php" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres ARCHIVAR este proyecto?');">
+                <form action="php/handle_archive.php" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres ARCHIVAR este proyecto?');">
                     <input type="hidden" name="id_proyecto" value="<?php echo $id_proyecto; ?>">
                     <input type="hidden" name="accion" value="archivar">
                     <button type="submit" name="cambiar_estado_usuario" class="btn-login btn-warn">Archivar Proyecto</button>
@@ -138,7 +138,12 @@ $todos_los_estados = $conn->query("SELECT id_estado, nombre_estado FROM Estados_
                         echo "<li><strong>Foto Principal:</strong><br><img src='$url' alt='Foto del Proyecto' class='project-view-image'></li>";
                     }
                     if ($archivo['tipo_archivo'] == 'documento') {
-                        echo "<li><a href='$url' class='btn btn--primary' target='_blank'>Descargar Documento</a></li>";
+                        // Solo mostrar el botón si el usuario tiene permiso (dueño o admin)
+                        if ($id_usuario == $proyecto['autor_id'] || $rol_usuario == 'admin') {
+                            echo "<li><a href='php/download_document.php?id_proyecto=$id_proyecto' class='btn btn--primary' target='_blank'>Descargar Documento</a></li>";
+                        } else {
+                            echo "<li><span style='color: var(--text-muted);'>📄 Documento (Solo visible para el creador y administradores)</span></li>";
+                        }
                     }
                     if ($archivo['tipo_archivo'] == 'enlace_externo') {
                         echo "<li><a href='$url' class='btn btn--primary' target='_blank'>Ver Enlace Externo (Video/Web)</a></li>";
@@ -154,7 +159,7 @@ $todos_los_estados = $conn->query("SELECT id_estado, nombre_estado FROM Estados_
     <div class="comment-section">
         <h3>Comentarios</h3>
 
-        <form action="handle_comment.php" method="POST" class="comment-form">
+        <form action="php/handle_comment.php" method="POST" class="comment-form">
             <input type="hidden" name="id_proyecto" value="<?php echo $id_proyecto; ?>">
             <div class="form-group">
                 <label for="comentario">Deja un comentario</label>
@@ -178,7 +183,7 @@ $todos_los_estados = $conn->query("SELECT id_estado, nombre_estado FROM Estados_
                             <span class="comment-date"><?php echo date('d/m/Y h:i a', strtotime($comentario['fecha_publicacion'])); ?></span>
 
                             <?php if ($rol_usuario == 'admin'): ?>
-                                <form action="handle_delete_comment.php" method="POST" class="delete-comment-form" onsubmit="return confirm('¿Estás seguro de que quieres ELIMINAR este comentario?');">
+                                <form action="php/handle_delete_comment.php" method="POST" class="delete-comment-form" onsubmit="return confirm('¿Estás seguro de que quieres ELIMINAR este comentario?');">
                                     <input type="hidden" name="id_comentario" value="<?php echo $comentario['id_comentario_proyecto']; ?>">
                                     <input type="hidden" name="id_proyecto" value="<?php echo $id_proyecto; ?>">
                                     <button type="submit" name="eliminar_comentario" class="delete-comment-btn">&times; Eliminar</button>

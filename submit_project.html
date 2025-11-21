@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir Proyecto - MEDIA SPROUTS</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-    <header class="main-header2">
-        <h1><a href="dashboard.php" style="color:white; text-decoration:none;">MEDIA SPROUTS</a></h1>
+    <header class="main-header">
+        <div class="main-header__logo">
+            <a href="dashboard.php" style="color:white; text-decoration:none;">MEDIA SPROUTS</a>
+        </div>
     </header>
 
     <main>
-        <div class="login-container"> <h2>Sube tu Proyecto</h2>
+        <div class="submit-project-container">
+            <h2>Sube tu Proyecto</h2>
             <p>Completa el formulario para que el equipo lo revise.</p>
-            
-            <form action="submit_project.php" method="POST" enctype="multipart/form-data">
-                
+
+            <form action="php/submit_project.php" method="POST" enctype="multipart/form-data">
+
                 <div class="form-group">
                     <label for="nombre_proyecto">Nombre del Proyecto</label>
                     <input type="text" id="nombre_proyecto" name="nombre_proyecto" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="descripcion_breve">Descripción Breve (Para la tarjeta)</label>
                     <input type="text" id="descripcion_breve" name="descripcion_breve" required>
@@ -41,16 +46,17 @@
                     <label for="documento_proyecto">Documento Adicional (PDF, DOCX) (Opcional)</label>
                     <input type="file" id="documento_proyecto" name="documento_proyecto" accept=".pdf,.doc,.docx">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="enlace_externo">Enlace Externo (Video, Web) (Opcional)</label>
                     <input type="url" id="enlace_externo" name="enlace_externo" placeholder="https://youtube.com/...">
                 </div>
-                
+
                 <button type="submit" class="btn-login">Enviar Proyecto</button>
             </form>
-            
+
         </div>
     </main>
 </body>
+
 </html>

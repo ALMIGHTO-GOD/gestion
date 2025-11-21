@@ -1,128 +1,100 @@
-/* ---
-   =============================================
-   CSS PARA LOGIN / REGISTRO (Tarjeta Blanca)
-   =============================================
---- */
+:root {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-hover: #7dd3fc;
+  --danger: #ef4444;
+  --border: #334155;
+  --font-main: "Roboto", sans-serif;
+}
 
-/* 1. Reset (El "Machetazo" para la línea de arriba) */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-/* 2. Cuerpo (Fondo oscuro, centra todo verticalmente) */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #0a192f; /* Fondo oscuro */
-  color: #333; /* Texto oscuro por defecto (para la tarjeta) */
+  font-family: var(--font-main);
+  background-color: var(--bg-body);
+  color: var(--text-main);
   display: flex;
-  flex-direction: column; /* Apila (header y form) */
-  align-items: center;
-  padding-top: 5vh; /* Un respiro arriba */
+  flex-direction: column;
   min-height: 100vh;
 }
 
-/* 3. Título (El "MEDIA SPROUTS" de arriba) */
 .main-header {
   text-align: center;
-  padding: 20px 0;
-  margin-bottom: 20px;
-  font-size: 2.5rem; /* Lo hacemos grande */
-  letter-spacing: 2px;
-  color: #ffffff; /* Texto blanco */
-  font-weight: 700;
+  padding: 20px;
+  background-color: var(--bg-card);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-/* 4. La Tarjeta (El ".login-container" blanco) */
 .login-container {
+  width: 100%;
   max-width: 450px;
-  width: 90%;
-  padding: 2.5rem;
-  background-color: #ffffff; /* ¡Fondo blanco! */
+  margin: auto;
+  /* Centrado vertical */
+  background-color: var(--bg-card);
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
 }
 
-/* Títulos dentro de la tarjeta (ej. "Crea tu Cuenta") */
-.login-container h2,
-.login-container h3,
 #titulo h3 {
   text-align: center;
-  color: #333; /* Texto oscuro */
+  color: #ffffff;
   margin-bottom: 25px;
   font-size: 1.8rem;
 }
 
-/* 5. Los campos del formulario (labels, inputs) */
 label {
   display: block;
   margin-bottom: 8px;
-  font-weight: 700;
-  color: #333;
+  color: var(--text-muted);
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #cccccc; /* Borde gris claro */
-  background-color: #f9f9f9; /* Fondo gris muy claro */
-  color: #333; 
+  margin-bottom: 20px;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  color: #fff;
   border-radius: 5px;
-  margin-bottom: 10px; /* Espacio entre inputs */
-  box-sizing: border-box;
-}
-input::placeholder {
-    color: #999;
 }
 
-/* 6. El Botón Azul */
-.btn-login,
 .btn-registrar {
   width: 100%;
   padding: 12px;
-  margin-top: 15px;
-  background-color: #007bff; /* Azul brillante */
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
+  background-color: var(--primary);
+  color: var(--bg-body);
   border: none;
   border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.btn-login:hover,
-.btn-registrar:hover {
-  background-color: #0056b3;
 }
 
-/* 7. El pie de la tarjeta */
+.btn-registrar:hover {
+  background-color: var(--primary-hover);
+}
+
 #iniciar-sesion {
   text-align: center;
-  margin-top: 25px;
-  font-size: 0.9rem;
-}
-#iniciar-sesion p {
-    color: #666;
-    margin: 10px 0;
-}
-#iniciar-sesion a {
-  color: #007bff; /* Enlace azul */
-  text-decoration: none;
-  font-weight: 500;
-}
-#iniciar-sesion a:hover {
-  text-decoration: underline;
+  margin-top: 20px;
 }
 
-/* 8. Tus divs de error (del JS) */
-#aviso-contraseña,
-#errorMsg {
-    font-family: 'Roboto', sans-serif;
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+#iniciar-sesion a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
 }

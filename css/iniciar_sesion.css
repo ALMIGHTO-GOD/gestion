@@ -1,52 +1,70 @@
-/* ---- Inspirado en los colores de Tele 10 ---- */
-body {
-    /* El fondo azul oscuro de la imagen */
-    background-color: #0a192f; 
-    
-    /* El texto blanco de la imagen */
-    color: #ffffff; 
-    
-    font-family: 'Roboto', sans-serif;
+:root {
+    --bg-body: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-hover: #7dd3fc;
+    --border: #334155;
+    --font-main: "Roboto", sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    box-sizing: border-box;
 }
 
-/* --- Header --- */
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header simple para login */
 .main-header {
     text-align: center;
-    padding: 20px 0;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
+    padding: 20px;
+    background-color: var(--bg-card);
 }
 
-/* --- Contenedor del Login (La tarjeta blanca) --- */
+.main-header h1 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
 .login-container {
+    width: 100%;
     max-width: 450px;
-    margin: 40px auto; /* Centrado en la página */
-    padding: 2rem;
-    
-    /* Fondo blanco para que el formulario contraste */
-    background-color: #ffffff;
-    
-    /* Texto oscuro dentro de la tarjeta blanca */
-    color: #333333; 
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
 }
 
 .login-container h2 {
     text-align: center;
-    color: #0a192f; /* Usamos el azul oscuro para el título */
     margin-bottom: 10px;
+    color: #fff;
 }
 
 .login-container p {
     text-align: center;
-    margin-bottom: 25px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
 }
 
-/* --- Formulario --- */
 .form-group {
     margin-bottom: 20px;
 }
@@ -54,55 +72,39 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 700;
+    color: var(--text-muted);
 }
 
-.form-group input[type="email"],
-.form-group input[type="password"] {
+.form-group input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #cccccc;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border);
+    color: #fff;
     border-radius: 5px;
-    box-sizing: border-box; /* Asegura que el padding no rompa el diseño */
 }
 
-/* --- Botón (Con el acento azul de Tele 10) --- */
 .btn-login {
     width: 100%;
     padding: 12px;
-    
-    /* Color de acento azul, como el logo de Tele 10 */
-    background-color: #007bff; 
-    
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 700;
+    background-color: var(--primary);
+    color: var(--bg-body);
     border: none;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .btn-login:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-hover);
 }
 
-/* --- Links al pie del formulario --- */
 .login-footer {
     text-align: center;
     margin-top: 20px;
 }
 
-.login-footer p {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
 .login-footer a {
-    color: #007bff;
+    color: var(--primary);
     text-decoration: none;
-}
-
-.login-footer a:hover {
-    text-decoration: underline;
 }

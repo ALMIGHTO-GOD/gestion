@@ -4,7 +4,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root";
 $pass_db = "";
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 

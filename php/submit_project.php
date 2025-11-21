@@ -14,7 +14,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 
 // --- 3. CREAR LA CARPETA DE SUBIDAS (SI NO EXISTE) ---
 // Los archivos se guardarán en "htdocs/media_sprouts/uploads/"
-$carpeta_subidas = 'uploads/'; // Sube un nivel (de 'php' a 'media_sprouts') y entra a 'uploads'
+$carpeta_subidas = '../uploads/'; // Sube un nivel (de 'php' a raíz) y entra a 'uploads'
 if (!is_dir($carpeta_subidas)) {
     mkdir($carpeta_subidas, 0755, true);
 }
@@ -102,7 +102,7 @@ try {
     echo "¡Proyecto subido con éxito! Serás redirigido al dashboard.";
     // Redirigimos de vuelta al dashboard
    // Esta es la forma correcta (una ruta absoluta desde el localhost)
-    header("Location: /media_sprouts/dashboard.php?upload=success");
+    header("Location: ../dashboard.php?upload=success");
     exit();
 
 } catch (Exception $e) {

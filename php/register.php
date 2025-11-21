@@ -2,11 +2,9 @@
 // (Aquí va tu código de PHPMailer)
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'phpmailer/src/Exception.php'; // (Ajusta tu ruta)
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
-//require_once 'config.local.php'; // (El de las contraseñas)
-
+require '../lib/phpmailer/PHPMailer-master/src/Exception.php';
+require '../lib/phpmailer/PHPMailer-master/src/PHPMailer.php';
+require '../lib/phpmailer/PHPMailer-master/src/SMTP.php';
 
 // --- ¡NUEVO GUARDIÁN DE SEGURIDAD! ---
 if (
@@ -15,7 +13,7 @@ if (
     empty(trim($_POST['telefono'])) ||
     empty(trim($_POST['password']))
 ) {
-    die("Error: Todos los campos son obligatorios. <a href='registro.html'>Inténtalo de nuevo</a>.");
+    die("Error: Todos los campos son obligatorios. <a href='../registro.html'>Inténtalo de nuevo</a>.");
 }
 // --- FIN DEL NUEVO GUARDIÁN ---
 
@@ -25,7 +23,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
@@ -44,7 +42,7 @@ $stmt_check->execute();
 $resultado_check = $stmt_check->get_result();
 
 if ($resultado_check->num_rows > 0) {
-    die("Error: Ese correo electrónico ya está registrado. <a href='login.html'>Intenta iniciar sesión</a>.");
+    die("Error: Ese correo electrónico ya está registrado. <a href='../login.html'>Intenta iniciar sesión</a>.");
 }
 $stmt_check->close();
 
@@ -68,17 +66,17 @@ try {
     $stmt_insert->close();
 
     // --- 7. INTENTAR ENVIAR EL CORREO DE BIENVENIDA ---
-            $mail = new PHPMailer(true);
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'luedhernandezor@ittepic.edu.mx'; // TU CORREO DE GMAIL
-            $mail->Password   = 'neiwyvabfsnrvwun';    // TU CONTRASEÑA DE APLICACIÓN
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465;
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'luedhernandezor@ittepic.edu.mx';
+    $mail->Password   = 'neiwyvabfsnrvwun';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port       = 465;
 
-            $mail->setFrom('luedhernandezor@ittepic.edu.mx', 'MEDIA SPROUTS');
-            $mail->addAddress($email); 
+    $mail->setFrom('luedhernandezor@ittepic.edu.mx', 'MEDIA SPROUTS');
+    $mail->addAddress($email); 
 
     $mail->isHTML(true);
     $mail_subject = '¡Bienvenido a MEDIA SPROUTS!';
@@ -87,30 +85,25 @@ try {
     $mail->Subject = $mail_subject;
     $mail->Body    = $mail_body;
     
-    $mail->send(); // <-- Si esto falla, saltará al 'catch'
+    $mail->send();
 
     // --- 8. ¡ÉXITO TOTAL! ---
-    // Si llegamos aquí, la BD guardó Y el correo se envió.
-    // Hacemos el registro permanente:
     $conn->commit();
     
-    echo "¡Registro exitoso! Te hemos enviado un correo de bienvenida. Ya puedes <a href='login.html'>iniciar sesión</a>.";
+    // Redirigir al login automáticamente
+    header("Location: ../login.html?registro=exitoso");
+    exit();
 
 } catch (Exception $e) {
     // --- 9. ¡ALGO FALLÓ! ---
-    // (Ya sea la BD o el envío de correo)
-    // Le decimos a la BD que cancele el registro:
     $conn->rollback();
 
-    // Damos un mensaje de error claro al usuario
     $error_info = isset($mail) ? $mail->ErrorInfo : $e->getMessage();
 
-    // Revisamos si el error fue por conexión (el más común)
     if (str_contains($error_info, "SMTP connect() failed") || str_contains($error_info, "Could not authenticate")) {
-        die("Error: No se pudo conectar al servidor de correos. Revisa tu conexión a internet o la configuración del servidor. **Tu registro ha sido cancelado.** <a href='registro.html'>Inténtalo de nuevo</a>.");
+        die("Error: No se pudo conectar al servidor de correos. Revisa tu conexión a internet o la configuración del servidor. **Tu registro ha sido cancelado.** <a href='../registro.html'>Inténtalo de nuevo</a>.");
     } else {
-        // Otro tipo de error (ej. correo inválido, etc.)
-        die("Error: No se pudo completar el registro. El envío de correo falló y tu registro ha sido cancelado. <br><small>Info: {$error_info}</small> <br><a href='registro.html'>Inténtalo de nuevo</a>.");
+        die("Error: No se pudo completar el registro. El envío de correo falló y tu registro ha sido cancelado. <br><small>Info: {$error_info}</small> <br><a href='../registro.html'>Inténtalo de nuevo</a>.");
     }
 }
 

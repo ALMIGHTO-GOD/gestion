@@ -34,16 +34,18 @@ if ($resultado_proyectos) {
 
 <title>Proyectos en Espera - Comunidad</title>
 
-<main class="project-container">
-  <h1>Proyectos en Espera</h1>
-  <p class="subtitle">Lista de proyectos pendientes.</p>
+<main class="main-content">
+  <div class="projects-section__header">
+    <h1>Proyectos en Espera</h1>
+    <p>Lista de proyectos pendientes.</p>
+  </div>
 
-    <div class="search-bar">
-    <input type="text" id="search" placeholder="Buscar proyecto o equipo...">
-    <div class="total">Total: <span id="count"><?php echo $conteo_proyectos; ?></span></div>
-  </div>
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Buscar proyecto o equipo...">
+    <div class="total">Total: <span id="count"><?php echo $conteo_proyectos; ?></span></div>
+  </div>
 
-    <div class="project-grid">
+  <div class="project-grid">
     <?php
     if ($conteo_proyectos > 0):
         mysqli_data_seek($resultado_proyectos, 0); 
@@ -77,10 +79,10 @@ if ($resultado_proyectos) {
     endif; 
     $resultado_proyectos->close();
     ?>
-  </div>
+  </div>
 </main>
 
-<script src="main.js" defer></script> 
+<script src="js/main.js" defer></script> 
 </body>
 </html>
 <?php

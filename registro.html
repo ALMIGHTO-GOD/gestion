@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta - MEDIA SPROUTS</title>
-
-    <link rel="stylesheet" href="registro.css">
-    
+    <link rel="stylesheet" href="css/registro.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
     <header class="main-header">
         MEDIA SPROUTS
     </header>
-
     <div class="login-container">
-        
-        <form action="register.php" method="post" id="registroForm">
-            
+        <form action="php/register.php" method="post" id="registroForm">
             <div id="titulo">
                 <h3>Crea tu Cuenta</h3>
             </div>
-            
             <label for="nombre">Nombres y apellidos</label>
             <input type="text" id="nombre" name="nombre" required>
-            
+
             <label for="telefono">Telefono</label>
             <input type="text" id="telefono" name="telefono" required>
-            
+
             <label for="correo">Correo electronico</label>
             <input type="email" id="correo" name="email" placeholder="nombre@ejemplo.com" required>
-            
+
             <label for="contraseña1">Contraseña</label>
             <input type="password" id="contraseña1" name="password" aria-describedby="passwordHelpBlock" required>
-            
+
             <label for="contraseña2">Confirmar contraseña</label>
             <input type="password" id="contraseña2" name="confirmar_password" required>
-            
+
             <div id="aviso-contraseña" class="error">
                 tu contraseña debe de tener entre 8-12 caracteres...
             </div>
-            
+
             <div id="errorMsg" class="error">
-                </div> 
+            </div>
 
             <button type="submit" class="btn-registrar" onclick="return validarFormulario()">Regístrate</button>
-            
+
             <div id="iniciar-sesion">
                 <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesion</a></p>
             </div>
         </form>
-        
-    </div> <script src="js/scripts.js"></script>
+    </div>
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>

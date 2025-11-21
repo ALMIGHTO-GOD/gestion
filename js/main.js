@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3. Encuentra los elementos con los que vamos a trabajar
         const countElement = document.getElementById('count');
         const projectGrid = document.querySelector('.project-grid');
-        const projects = projectGrid.querySelectorAll('.project-card');
+        const projects = projectGrid.querySelectorAll('.project-card-link');
 
         // 4. "El Oído": Escucha cada vez que el usuario levanta una tecla
         searchBar.addEventListener('keyup', () => {

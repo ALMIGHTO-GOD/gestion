@@ -12,7 +12,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -57,7 +57,7 @@ if (isset($_POST['cambiar_estado_usuario'])) {
     
     if ($stmt_update->execute()) {
         // ¡Éxito! Lo mandamos de regreso a la página del proyecto
-        header("Location: view_project.php?id=" . $id_proyecto . "&status=user_changed");
+        header("Location: ../view_project.php?id=" . $id_proyecto . "&status=user_changed");
         exit();
     } else {
         die("Error al actualizar el estado.");
@@ -65,7 +65,7 @@ if (isset($_POST['cambiar_estado_usuario'])) {
 
 } else {
     // Si llegó aquí por error, lo regresamos
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
     exit();
 }
 ?>

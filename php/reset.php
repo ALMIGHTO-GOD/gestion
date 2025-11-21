@@ -5,19 +5,6 @@ if (!isset($_GET['token'])) {
 }
 $token = $_GET['token'];
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Restablecer Contraseña - MEDIA SPROUTS</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <main>
-        <div class="login-container">
-            <h2>Crear nueva contraseña</h2>
-            
             <form action="actualizar_pass.php" method="POST">
                 <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
                 

@@ -10,7 +10,7 @@ $servidor = "127.0.0.1";
 $usuario_db = "root"; 
 $pass_db = "";        
 $db_nombre = "media_sprouts";
-$puerto = 3307;
+$puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) {
@@ -31,14 +31,14 @@ if (isset($_POST['eliminar_comentario'])) {
     
     if ($stmt_delete->execute()) {
         // ¡Éxito!
-        header("Location: view_project.php?id=" . $id_proyecto . "&comment=deleted");
+        header("Location: ../view_project.php?id=" . $id_proyecto . "&comment=deleted");
         exit();
     } else {
         die("Error al eliminar el comentario.");
     }
     
 } else {
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
     exit();
 }
 ?>
