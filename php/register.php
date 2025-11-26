@@ -13,7 +13,8 @@ if (
     empty(trim($_POST['telefono'])) ||
     empty(trim($_POST['password']))
 ) {
-    die("Error: Todos los campos son obligatorios. <a href='../registro.html'>Inténtalo de nuevo</a>.");
+    header("Location: ../registro.html?error=empty_fields");
+    exit();
 }
 // --- FIN DEL NUEVO GUARDIÁN ---
 
@@ -26,7 +27,10 @@ $db_nombre = "media_sprouts";
 $puerto = 3306;
 
 $conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
-if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
+if ($conn->connect_error) { 
+    header("Location: ../login.html?error=db_connection_failed");
+    exit();
+}
 
 // --- 2. OBTENER DATOS DEL FORMULARIO ---
 $nombre = $_POST['nombre'];
@@ -42,7 +46,8 @@ $stmt_check->execute();
 $resultado_check = $stmt_check->get_result();
 
 if ($resultado_check->num_rows > 0) {
-    die("Error: Ese correo electrónico ya está registrado. <a href='../login.html'>Intenta iniciar sesión</a>.");
+    header("Location: ../registro.html?error=email_exists");
+    exit();
 }
 $stmt_check->close();
 
@@ -100,11 +105,21 @@ try {
 
     $error_info = isset($mail) ? $mail->ErrorInfo : $e->getMessage();
 
-    if (str_contains($error_info, "SMTP connect() failed") || str_contains($error_info, "Could not authenticate")) {
-        die("Error: No se pudo conectar al servidor de correos. Revisa tu conexión a internet o la configuración del servidor. **Tu registro ha sido cancelado.** <a href='../registro.html'>Inténtalo de nuevo</a>.");
-    } else {
-        die("Error: No se pudo completar el registro. El envío de correo falló y tu registro ha sido cancelado. <br><small>Info: {$error_info}</small> <br><a href='../registro.html'>Inténtalo de nuevo</a>.");
+    // Si es error de BD (el que lanzamos manualmente o nativo)
+    if ($e->getMessage() == "Error al guardar en la base de datos." || str_contains($e->getMessage(), "INSERT")) {
+        header("Location: ../registro.html?error=db_insert_failed");
+        exit();
     }
+    
+    // Si es error de conexión/internet (SMTP)
+    if (str_contains($error_info, "SMTP connect() failed") || str_contains($error_info, "Could not authenticate") || str_contains($error_info, "connect to")) {
+        header("Location: ../login.html?error=connection_failed");
+        exit();
+    } 
+    
+    // Cualquier otro error
+    header("Location: ../login.html?error=unknown_error");
+    exit();
 }
 
 $conn->close();

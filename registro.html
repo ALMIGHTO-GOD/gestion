@@ -48,6 +48,35 @@
         </form>
     </div>
     <script src="js/scripts.js"></script>
+    <script>
+        // Mostrar errores basados en parámetros URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const errorMsgDiv = document.getElementById('errorMsg');
+
+        if (error) {
+            let message = '';
+            switch (error) {
+                case 'empty_fields':
+                    message = 'Por favor, completa todos los campos.';
+                    break;
+                case 'email_exists':
+                    message = 'Este correo ya está registrado. Intenta iniciar sesión.';
+                    break;
+                case 'db_insert_failed':
+                    message = 'Hubo un problema al crear tu cuenta. Inténtalo de nuevo.';
+                    break;
+                default:
+                    message = 'Ocurrió un error desconocido.';
+            }
+            if (message) {
+                errorMsgDiv.textContent = message;
+                errorMsgDiv.style.display = 'block';
+                errorMsgDiv.style.color = 'red';
+                errorMsgDiv.style.marginBottom = '15px';
+            }
+        }
+    </script>
 </body>
 
 </html>
