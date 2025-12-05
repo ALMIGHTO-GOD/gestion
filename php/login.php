@@ -38,11 +38,19 @@ if ($resultado->num_rows === 1) {
         
     } else {
         // Contraseña incorrecta
-        die("Error: Contraseña incorrecta. <a href='../login.html'>Inténtalo de nuevo</a>.");
+        echo "<script>
+            alert('No se encontró usuario con esas credenciales.');
+            window.location.href='../login.html';
+        </script>";
+        exit();
     }
 } else {
     // Usuario no encontrado
-    die("Error: Usuario no encontrado. <a href='../registro.html'>Regístrate aquí</a>.");
+    echo "<script>
+        alert('No se encontró usuario con esas credenciales.');
+        window.location.href='../login.html';
+    </script>";
+    exit();
 }
 
 $stmt->close();
