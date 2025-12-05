@@ -15,13 +15,10 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 $rol_usuario = $_SESSION['rol_usuario'];
 
 // --- 3. CONEXIÓN A LA BD ---
-$servidor = "127.0.0.1";
-$usuario_db = "root"; 
-$pass_db = "";        
-$db_nombre = "media_sprouts";
-$puerto = 3306;
+require_once 'config.php';
+// Ahora $conn está disponible gracias a config.php
 
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
+// Verificar si hubo error de conexión
 if ($conn->connect_error) {
     $error_bd = "Error de conexión a la BD: " . $conn->connect_error;
 }
@@ -31,7 +28,7 @@ if ($conn->connect_error) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

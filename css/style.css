@@ -1,4 +1,4 @@
-/* ---
+﻿/* ---
    =============================================
    ESTILOS DASHBOARD (Restaurado)
    =============================================
@@ -739,13 +739,13 @@ ul {
 }
 
 .btn-success {
-  background-color: var(--success);
-  color: white;
+  background-color: #10b981;
+  color: #ffffff;
 }
 
 .btn-warn {
-  background-color: var(--warning);
-  color: white;
+  background-color: #f59e0b;
+  color: #ffffff;
 }
 
 /* --- Submit Project Page --- */
@@ -934,13 +934,13 @@ input[type="file"]::file-selector-button {
 }
 
 .btn-success {
-  background-color: var(--success);
-  color: white;
+  background-color: #10b981;
+  color: #ffffff;
 }
 
 .btn-warn {
-  background-color: var(--warning);
-  color: white;
+  background-color: #f59e0b;
+  color: #ffffff;
 }
 
 /* --- Submit Project Page --- */
@@ -1035,4 +1035,343 @@ input[type="file"]::file-selector-button:hover {
   color: var(--text-muted);
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+/* ===== ADMIN PANEL STYLES ===== */
+
+.admin-table {
+
+  width: 100%;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  margin-top: 20px;
+
+  background-color: #1e293b;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+.admin-table thead {
+
+  background-color: #0f172a;
+
+}
+
+
+
+.admin-table th {
+
+  padding: 14px 16px;
+
+  text-align: left;
+
+  font-weight: 600;
+
+  font-size: 0.75rem;
+
+  text-transform: uppercase;
+
+  color: #38bdf8;
+
+  letter-spacing: 0.05em;
+
+  border-bottom: 2px solid #334155;
+
+}
+
+
+
+.admin-table td {
+
+  padding: 14px 16px;
+
+  border-bottom: 1px solid #334155;
+
+  text-align: left;
+
+  color: #cbd5e1;
+
+  font-size: 0.875rem;
+
+}
+
+
+
+.admin-table tbody tr {
+
+  background-color: #1e293b;
+
+  transition: background-color 0.2s ease;
+
+}
+
+
+
+.admin-table tbody tr:hover {
+
+  background-color: #2d3b52;
+
+}
+
+
+
+.admin-table tbody tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+
+
+.cell-actions {
+
+  display: flex;
+
+  gap: 8px;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.actions-grid-container {
+
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.admin-action-form {
+
+  margin: 0;
+
+}
+
+
+
+.btn-admin-action {
+
+  padding: 6px 12px;
+
+  font-size: 0.75rem;
+
+  border: none;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+
+  white-space: nowrap;
+
+}
+
+
+
+.btn-admin-action:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+.btn-warn {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+
+
+.btn-success {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+
+
+/* ===== ADMIN PANEL STYLES ===== */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  background-color: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.admin-table thead {
+  background-color: #0f172a;
+}
+
+.admin-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #334155;
+}
+
+.admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #334155;
+  text-align: left;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.admin-table tbody tr {
+  background-color: #1e293b;
+  transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #2d3b52;
+}
+
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cell-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions-grid-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-action-form {
+  margin: 0;
+}
+
+.btn-admin-action {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-admin-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-warn {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.btn-warn:hover {
+  background-color: #d97706;
+}
+
+.btn-success {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+/* ===== PROJECT CONTAINER (Admin Panel) ===== */
+.project-container {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-container h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.project-container .subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.search-bar button {
+  padding: 12px 24px;
+  white-space: nowrap;
 }

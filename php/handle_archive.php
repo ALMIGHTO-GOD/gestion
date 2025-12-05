@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // --- 1. GUARDIÁN Y SESIÓN ---
 session_start();
 // Si no hay sesión, lo corremos
@@ -8,16 +8,7 @@ if (!isset($_SESSION['id_usuario'])) {
 $id_usuario_actual = $_SESSION['id_usuario'];
 
 // --- 2. CONEXIÓN MANUAL A LA BD ---
-$servidor = "127.0.0.1";
-$usuario_db = "root"; 
-$pass_db = "";        
-$db_nombre = "media_sprouts";
-$puerto = 3306;
-
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+require_once '../config.php';`r`n// Ahora $conn está disponible gracias a config.php
 
 // --- 3. PROCESAR EL CAMBIO DE ESTADO ---
 if (isset($_POST['cambiar_estado_usuario'])) {

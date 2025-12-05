@@ -20,13 +20,9 @@ if (
 
 
 // --- 1. CONEXIÓN A LA BASE DE DATOS ---
-$servidor = "127.0.0.1";
-$usuario_db = "root"; 
-$pass_db = "";        
-$db_nombre = "media_sprouts";
-$puerto = 3306;
+require_once '../config.php';
+// Ahora $conn está disponible gracias a config.php
 
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
 if ($conn->connect_error) { 
     header("Location: ../login.html?error=db_connection_failed");
     exit();

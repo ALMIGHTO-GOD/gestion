@@ -4,7 +4,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #0f172a; /* Azul oscuro de fondo original */
+  background-color: #0f172a;
+  /* Azul oscuro de fondo original */
   color: #f1f5f9;
   margin: 0;
   padding: 0;
@@ -35,7 +36,8 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 5%;
-  background-color: #1e293b; /* Fondo del header */
+  background-color: #1e293b;
+  /* Fondo del header */
   border-bottom: 1px solid #334155;
 }
 
@@ -56,7 +58,8 @@ a {
 }
 
 .main-header__nav a {
-  color: #94a3b8; /* Color de enlace inactivo */
+  color: #94a3b8;
+  /* Color de enlace inactivo */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -70,7 +73,8 @@ a {
 .main-header__nav a.active {
   color: #ffffff;
   font-weight: 700;
-  border-bottom: 3px solid #38bdf8; /* Línea azul brillante */
+  border-bottom: 3px solid #38bdf8;
+  /* Línea azul brillante */
   padding-bottom: 6px;
 }
 
@@ -88,7 +92,8 @@ a {
 }
 
 .user-greeting a {
-  color: #f0a0a0; /* Rojo para 'Salir' */
+  color: #f0a0a0;
+  /* Rojo para 'Salir' */
   text-decoration: none;
 }
 
@@ -163,17 +168,21 @@ a {
   background-color: #38bdf8;
   color: #0f172a;
 }
+
 .btn--search:hover {
   background-color: #7dd3fc;
 }
 
 /* 🔺 Convertir en Admin (más rojo y vibrante) */
 .btn--admin {
-  background-color: #dc2626; /* rojo intenso */
+  background-color: #dc2626;
+  /* rojo intenso */
   color: #fff;
 }
+
 .btn--admin:hover {
-  background-color: #b91c1c; /* rojo aún más oscuro */
+  background-color: #b91c1c;
+  /* rojo aún más oscuro */
 }
 
 /* 🔻 Quitar credenciales / Convertir en Usuario (mismo color que buscar) */
@@ -181,6 +190,7 @@ a {
   background-color: #38bdf8;
   color: #0f172a;
 }
+
 .btn--user:hover {
   background-color: #7dd3fc;
 }

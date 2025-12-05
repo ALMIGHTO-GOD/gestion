@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 // --- 1. VERIFICAR QUE EL USUARIO ESTÉ LOGUEADO ---
@@ -16,16 +16,7 @@ if (!isset($_GET['id_proyecto'])) {
 $id_proyecto = intval($_GET['id_proyecto']);
 
 // --- 3. CONEXIÓN A LA BD ---
-$servidor = "127.0.0.1";
-$usuario_db = "root"; 
-$pass_db = "";        
-$db_nombre = "media_sprouts";
-$puerto = 3306;
-
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+require_once '../config.php';`r`n// Ahora $conn está disponible gracias a config.php
 
 // --- 4. OBTENER INFORMACIÓN DEL PROYECTO Y SU DUEÑO ---
 $sql_proyecto = "SELECT id_usuario, nombre_proyecto FROM Proyectos WHERE id_proyecto = ?";

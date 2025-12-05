@@ -10,16 +10,8 @@ if (!isset($_SESSION['id_usuario'])) {
 $id_usuario_actual = $_SESSION['id_usuario'];
 
 // --- 2. CONEXIÓN A LA BASE DE DATOS ---
-$servidor = "127.0.0.1";
-$usuario_db = "root"; 
-$pass_db = "";        
-$db_nombre = "media_sprouts";
-$puerto = 3306;
-
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+require_once '../config.php';
+// Ahora $conn está disponible gracias a config.php
 
 // --- 3. CREAR LA CARPETA DE SUBIDAS (SI NO EXISTE) ---
 // Los archivos se guardarán en "htdocs/media_sprouts/uploads/"

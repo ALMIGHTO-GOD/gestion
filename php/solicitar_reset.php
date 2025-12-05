@@ -2,19 +2,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require '../lib/phpmailer/PHPMailer-master/src/Exception.php';
+require '../lib/phpmailer/PHPMailer-master/src/PHPMailer.php';
+require '../lib/phpmailer/PHPMailer-master/src/SMTP.php';
 
 // --- 1. CONEXIÓN A LA BASE DE DATOS ---
-$servidor = "127.0.0.1";
-$usuario_db = "root";
-$pass_db = "";
-$db_nombre = "media_sprouts";
-$puerto = 3306;
-
-$conn = new mysqli($servidor, $usuario_db, $pass_db, $db_nombre, $puerto);
-if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
+require_once '../config.php';
+// Ahora $conn est� disponible gracias a config.php
 
 // --- 2. VALIDAR EL CORREO ---
 if (isset($_POST['email'])) {
@@ -56,14 +50,23 @@ if (isset($_POST['email'])) {
             $mail->Body    = "Hola,<br><br>Haz clic en este enlace para restablecer tu contraseña:<br><br><a href='$enlace_reset'>$enlace_reset</a><br><br>Si no solicitaste esto, ignora este correo.";
 
             $mail->send();
-            echo "Si tu correo existe, te hemos enviado un enlace de recuperación, puedes cerrar esta ventana.";
+            echo "<script>
+                alert('Si tu correo existe, te hemos enviado un enlace de recuperación.');
+                window.location.href='../login.html';
+            </script>";
         
         } catch (Exception $e) {
-            echo "Si tu correo existe, te hemos enviado un enlace, Puedes cerrar esta ventana. (Error al enviar: {$mail->ErrorInfo})";
+            echo "<script>
+                alert('Hubo un error al enviar el correo. Por favor intenta más tarde.');
+                window.location.href='../login.html';
+            </script>";
         }
 
     } else {
-        echo "Si tu correo existe, te hemos enviado un enlace. De lo contrario regresa a <a href='registro.html'>Regístrate aquí</a>";
+        echo "<script>
+            alert('Si tu correo existe, te hemos enviado un enlace de recuperación.');
+            window.location.href='../login.html';
+        </script>";
     }
 }
 $conn->close();
